@@ -97,14 +97,12 @@
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
 
-% start with section 0
-\setcounter{section}{-1}
-
 % text formatting
 \newcommand{\defemph}{\textbf}
 
 % text shortcuts
 \newcommand{\basis}[1]{#1\nobreakdash-basis}
+\newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
 \newcommand{\howmanyth}[1]{#1\nobreakdash-th}
 \newcommand{\representation}[1]{#1\nobreakdash-representation}
 \newcommand{\representations}[1]{#1\nobreakdash-representations}
@@ -130,8 +128,8 @@
 % spaces
 \newcommand{\Exterior}{\bigwedge}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\K}{K}
-\DeclareMathOperator{\Par}{Par}
 \newcommand{\signrep}{\mathbbm{U}}
 \DeclareMathOperator{\Symm}{Sym}
 \DeclareMathOperator{\symm}{S}
@@ -149,6 +147,7 @@
 \newcommand{\defined}{\coloneqq}
 \newcommand{\defines}{\eqqcolon}
 \newcommand{\ispar}{\vdash}
+\newcommand{\outertensor}{\boxtimes}
 \newcommand{\strictlydominated}{\vartriangleleft}
 \newcommand{\tensor}{\otimes}
 
