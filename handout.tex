@@ -328,27 +328,14 @@ It follows that~$\symm_n$ acts linearly on~$M^\lambda$, the free vector space on
   \Complex[\symm_n] \tensor_{\Complex[R(T)]} \Complex[R(T)]/(p - 1 \suchthat p \in R(T))
   \\
   &\cong
-  \Complex[\symm_n] \tensor_{\Complex[R(T)]} \trivrep_{R(T)} \,.
-\end{align*}
-If~$T$ is the \enquote{horizontal standard numbering}, e.g.
-\[
-  \begin{ytableau}
-     1 &  2 & 3 & 4 & 5 \\
-     6 &  7 & 8 & 9 \\
-  \end{ytableau}
-\]
-for~$\lambda = (5,4)$, then~$R(T) = \symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}$ where~$\lambda = (\lambda_1, \dotsc, \lambda_t)$ and thus
-\begin{align*}
-  M^\lambda
-  &\cong
   \Complex[\symm_n] \tensor_{\Complex[R(T)]} \trivrep_{R(T)}
   \\
-  &\cong
+   &\cong
   \Complex[\symm_n]
   \tensor_{\Complex[\symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}]}
   \trivrep_{\symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}}
   \\
-  &\cong
+   &\cong
   \Complex[\symm_n]
   \tensor_{\Complex[\symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}]}
   (\trivrep_{\symm_{\lambda_1}} \outertensor \dotsb \outertensor \trivrep_{\symm_{\lambda_t}})
@@ -489,7 +476,7 @@ Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it foll
     \Schur(S^\lambda)
     \to
     0
-  \]
+e  \]
   and find that
   \[
     \Schur(S^\lambda)
@@ -869,7 +856,7 @@ An equality~$f = g$ holds in~$\Lambda$ if and only if for every~$k \geq 0$ the e
 % Similarly for~$h_i$ instead of~$e_i$.
 
 \begin{theorem}
-  Let~$\Phi \colon \Lambda \to R$ be the unique additive group homomorphism that maps the basis element~$e_\lambda$ to the element~$[\widetilde{M}^\lambda]$ where~$\lambda$ ranges through all partitions.
+  Let~$\Phi \colon \Lambda \to R$ be the unique additive group homomorphism that maps the basis element~$e_{\tilde{\lambda}}$ to the element~$[\widetilde{M}^\lambda]$ where~$\lambda$ ranges through all partitions.
   \begin{enumerate}
     \item
       The map~$\Phi$ is an isomorphism of rings.
@@ -955,13 +942,13 @@ We have the following special cases of this diagram:
     \arrow[leftrightarrow]{r}
     \arrow{d}
     \&
-    e_\lambda
+    e_{\tilde{\lambda}}
     \arrow{d}
     \\
     {[\widetilde{M}^\lambda(V)]}
     \arrow[leftrightarrow]{r}
     \&
-    e_\lambda(x_1, \dotsc, x_n)
+    e_{\tilde{\lambda}}(x_1, \dotsc, x_n)
   \end{tikzcd}
   \qquad
   \begin{tikzcd}[ampersand replacement = \&]
@@ -1010,19 +997,19 @@ We can now use these correspondeces to translate between problems about the repr
           $h_\lambda = s_\lambda + \sum_{\mu \strictlydominated \lambda} K_{\mu, \lambda} s_\mu$.
       \end{enumerate}
       The numbers~$K_{\mu, \lambda}$ are the \defemph{Kostka numbers}.
-    \item
-      For every partition~$\lambda$ there exist unique natural numbers~$K_{\mu, \lambda}$ such that one and thus all of the following conditions hold:
-      \begin{enumerate}
-        \item
-          $\widetilde{M}^\lambda \cong S^{\tilde{\lambda}} \oplus \bigoplus_{\tilde{\mu} \strictlydominated \lambda} (S^\mu)^{\oplus K_{\tilde{\mu}, \lambda}}$,
-        \item
-          $\widetilde{M}^\lambda(V) \cong S^{\tilde{\lambda}}(V) \oplus \bigoplus_{\tilde{\mu} \strictlydominated \lambda} S^\mu(V)^{\oplus K_{\tilde{\mu}, \lambda}}$,
-        \item
-          $e_\lambda(x_1, \dotsc, x_m) = s_{\tilde{\lambda}}(x_1, \dotsc, x_m) + \sum_{\tilde{\mu} \strictlydominated \lambda} K_{\tilde{\mu}, \lambda} s_\mu(x_1, \dotsc, x_m)$,
-        \item
-          $e_\lambda = s_{\tilde{\lambda}} + \sum_{\tilde{\mu} \strictlydominated \lambda} K_{\tilde{\mu}, \lambda} s_\mu$.
-      \end{enumerate}
-      The numbers~$K_{\mu, \lambda}$ are again the Kostka numbers as above.
+%     \item
+%       For every partition~$\lambda$ there exist unique natural numbers~$K_{\mu, \lambda}$ for~$\tilde{\mu} \strictlydominated \lambda$ such that one and thus all of the following conditions hold:
+%       \begin{enumerate}
+%         \item
+%           $\widetilde{M}^{\tilde{\lambda}} \cong S^{\tilde{\lambda}} \oplus \bigoplus_{\tilde{\mu} \strictlydominated \lambda} (S^\mu)^{\oplus K_{\tilde{\mu}, \lambda}}$,
+%         \item
+%           $\widetilde{M}^{\tilde{\lambda}}(V) \cong S^{\tilde{\lambda}}(V) \oplus \bigoplus_{\tilde{\mu} \strictlydominated \lambda} S^\mu(V)^{\oplus K_{\tilde{\mu}, \lambda}}$,
+%         \item
+%           $e_{\tilde{\lambda}}(x_1, \dotsc, x_m) = s_{\tilde{\lambda}}(x_1, \dotsc, x_m) + \sum_{\tilde{\mu} \strictlydominated \lambda} K_{\tilde{\mu}, \lambda} s_\mu(x_1, \dotsc, x_m)$,
+%         \item
+%           $e_{\tilde{\lambda}} = s_{\tilde{\lambda}} + \sum_{\tilde{\mu} \strictlydominated \lambda} K_{\tilde{\mu}, \lambda} s_\mu$.
+%       \end{enumerate}
+%       The numbers~$K_{\mu, \lambda}$ are again the Kostka numbers as above.
     \item
       For any two partitions~$\lambda$ and~$\mu$ there exist natural numbers~$c^{\nu}_{\lambda, \mu}$ for~$\nu \ispar \size{\lambda} + \size{\mu}$ such that one and thus all of the following conditions hold:
       \begin{enumerate}
