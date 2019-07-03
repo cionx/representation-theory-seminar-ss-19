@@ -1,0 +1,172 @@
+% better microtypography
+\usepackage{microtype}
+
+% better macros
+\usepackage{xparse}
+
+% automatic quotation marks
+\usepackage{csquotes}
+
+% general mathtools
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm} % configuration after cleveref was included
+\usepackage{bbm}
+
+% commutative diagrams
+\usepackage{tikz-cd}
+
+% Young tableaux, Young diagrams and friend
+\usepackage[centertableaux]{ytableau}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcount\tableauRow\newcount\tableauCol
+\newcommand\Tableau[1]{%
+  \vcenter{\hbox{
+  \begin{tikzpicture}[scale=0.5,draw/.append style={thick,black},baseline=4mm]
+    \tableauRow=0
+    \foreach \Row in {#1} {
+       \tableauCol=1
+       \foreach\k in \Row {
+          \draw(\the\tableauCol,\the\tableauRow)+(-.5,-.5)rectangle++(.5,.5);
+          \draw(\the\tableauCol,\the\tableauRow)node{\k};
+          \global\advance\tableauCol by 1
+       }
+       \global\advance\tableauRow by -1
+    }
+  \end{tikzpicture}
+  }}
+}
+\newcommand\Tabloid[1]{%
+  \vcenter{\hbox{
+  \begin{tikzpicture}[scale=0.5,draw/.append style={thick,black},baseline=4mm]
+    \tableauRow=0
+    \foreach \Row in {#1} {
+       \tableauCol=1
+       \foreach\k in \Row {
+          \draw($(\the\tableauCol,\the\tableauRow)+(-.5,-.5)$)--++(1,0);
+          \draw($(\the\tableauCol,\the\tableauRow)+(-.5,.5)$)--++(1,0);
+          \draw(\the\tableauCol,\the\tableauRow)node{\k};
+          \global\advance\tableauCol by 1
+       }
+       \global\advance\tableauRow by -1
+    }
+  \end{tikzpicture}
+  }}
+}
+\newcommand\ColumnTabloid[1]{%
+  \vcenter{\hbox{
+  \begin{tikzpicture}[scale=0.5,draw/.append style={thick,black},baseline=4mm]
+    \tableauRow=0
+    \foreach \Row in {#1} {
+       \tableauCol=1
+       \foreach\k in \Row {
+          \draw($(\the\tableauCol,\the\tableauRow)+(-.5,-.5)$)--++(0,1);
+          \draw($(\the\tableauCol,\the\tableauRow)+(.5,-.5)$)--++(0,1);
+          \draw(\the\tableauCol,\the\tableauRow)node{\k};
+          \global\advance\tableauCol by 1
+       }
+       \global\advance\tableauRow by -1
+    }
+  \end{tikzpicture}
+  }}
+}
+
+% better enumerating
+\usepackage{enumitem}
+\setlist[enumerate, 1]{leftmargin=*, align=left, label=(\arabic*)}
+\setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
+
+
+% clever referencing
+\usepackage[capitalise,noabbrev]{cleveref}
+
+% thereom environments
+\newcounter{everything}
+\theoremstyle{definition}
+\newtheorem{corollary}[everything]{Corollary}
+\newtheorem{example}[everything]{Example}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{remark}[everything]{Remark}
+\newtheorem{theorem}[everything]{Theorem}
+
+% prevents breaking inline math around binary or relationship symbols
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+% start with section 0
+\setcounter{section}{-1}
+
+% text formatting
+\newcommand{\defemph}{\textbf}
+
+% text shortcuts
+\newcommand{\basis}[1]{#1\nobreakdash-basis}
+\newcommand{\howmanyth}[1]{#1\nobreakdash-th}
+\newcommand{\representation}[1]{#1\nobreakdash-representation}
+\newcommand{\representations}[1]{#1\nobreakdash-representations}
+\newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
+
+% arrows
+\newcommand{\from}{\leftarrow}
+\newcommand{\longto}{\longrightarrow}
+\newcommand{\xto}{\xrightarrow}
+\newcommand{\xlongto}[1]{\xto{\;#1\;}}
+
+% categories
+\newcommand{\Acat}{\mathcal{A}}
+\newcommand{\catname}{\mathbf}
+\newcommand{\rep}[1]{#1\text{-}\catname{rep}}
+\newcommand{\prep}[1]{#1\text{-}\catname{rep}}
+
+% numbers
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Complex}{\mathbb{C}}
+
+% spaces
+\newcommand{\Exterior}{\bigwedge}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\K}{K}
+\DeclareMathOperator{\Par}{Par}
+\newcommand{\signrep}{\mathbbm{U}}
+\DeclareMathOperator{\Symm}{Sym}
+\DeclareMathOperator{\symm}{S}
+\newcommand{\trivrep}{\mathbbm{1}}
+
+% functions
+\DeclareMathOperator{\Char}{Char}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\length}{\ell}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\Schur}{\mathbb{S}}
+\DeclareMathOperator{\tr}{tr}
+
+% binary symbols
+\newcommand{\defined}{\coloneqq}
+\newcommand{\defines}{\eqqcolon}
+\newcommand{\ispar}{\vdash}
+\newcommand{\strictlydominated}{\vartriangleleft}
+\newcommand{\tensor}{\otimes}
+
+% delimiters
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
+\DeclarePairedDelimiter{\size}{\lvert}{\rvert}
+\NewDocumentCommand{\suchthat}{so}{
+  \IfValueTF{#2}
+  {
+    \,#2|\,
+  }
+  {
+    \IfBooleanTF{#1}
+    {
+      \,\middle|\,
+    }
+    {
+      \mathrel{|}
+    }
+  }
+}
