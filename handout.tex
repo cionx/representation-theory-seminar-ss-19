@@ -46,18 +46,18 @@ In this talk we will continue to explain the following connections:
 
 
 
-\section{Recalling the last talk}
+\section{Review}
 
 
 
-\subsection{The irreducible representations~$S^\lambda(V)$}
+\subsection{Schur modules}
 
 We have previously seen that the isomorphism classes of irreducible finite-dimensional polynomial representations of~$\GL(V)$ are indexed by the set of all partitions:
 For every partition~$\lambda$ with~$\lambda = (\lambda_1, \dotsc, \lambda_t)$ let
 \[
   \widetilde{M}^\lambda(V)
   =
-  \Exterior^{\tilde{\lambda}_1}(V) \tensor \dotsb \tensor \Exterior^{\tilde{\lambda}_n}(V) \,.
+  \Exterior^{\tilde{\lambda}_1}(V) \tensor \dotsb \tensor \Exterior^{\tilde{\lambda}_n}(V)
 \]
 where~$\tilde{\lambda}$ is the transposed of~$\lambda$.
 The tensor factor~$\Exterior^{\tilde{\lambda}_j}(V)$ hence comes from the~{\howmanyth{$j$}} column of the Young diagram associated to~$\lambda$, which has height~$\tilde{\lambda}_j$.
@@ -164,13 +164,13 @@ For every~$n \geq 0$ the tensor power~$V^{\tensor n}$ is again a~{\representatio
   =
   e_{\sigma(1)} \tensor \dotsb \tensor e_{\sigma(n)} \,.
 \]
-It follows that for every~{\representation{$\symm_n$}}~$E$ we get a~{\representation{$\GL(V)$}}
+It follows that for every (left)~{\representation{$\symm_n$}}~$E$ we get a~{\representation{$\GL(V)$}}
 \[
   \Schur(E)
   \defined
   V^{\tensor n} \tensor_{\Complex[\symm_n]} E \,.
 \]
-This construction results an exact additive functor
+This construction results in an exact additive functor
 \[
   \Schur
   \colon
@@ -203,13 +203,13 @@ It depends on both~$n$ and~$V$, but we will omit this in our notation.
   \end{enumerate}
 \end{example}
 
-If~$V_1, \dotsc, V_t$ are representations of the groups~$\symm_{n_1}, \dotsc, \symm_{n_t}$ then for~$n = n_1 + \dotsb + n_t$,
+If~$E_1, \dotsc, E_t$ are representations of the groups~$\symm_{n_1}, \dotsc, \symm_{n_t}$ then for~$n = n_1 + \dotsb + n_t$,
 \[
-  V_1 \circ \dotsb \circ V_t
+  E_1 \circ \dotsb \circ E_t
   \defined
   \Complex[\symm_n]
   \tensor_{\Complex[\symm_{n_1} \times \dotsb \times \symm_{n_t}]}
-  (V_1 \outertensor \dotsb \outertensor V_t)
+  (E_1 \outertensor \dotsb \outertensor E_t)
 \]
 is a representation of~$\symm_n$.
 
@@ -233,37 +233,37 @@ is a representation of~$\symm_n$.
   \]
 \end{lemma}
 
-\begin{proof}
-  We find that
-  \begin{align*}
-    \Schur(E \circ F)
-    &=
-    V^{\tensor (a+b)}
-    \tensor_{\Complex[\symm_{a+b}]}
-    \Complex[\symm_{a+b}]
-    \tensor_{\Complex[\symm_a \times \symm_b]}
-    (E \outertensor F)
-    \\
-    &\cong
-    V^{\tensor (a+b)}
-    \tensor_{\Complex[\symm_a \times \symm_b]}
-    (E \outertensor F)
-    \\
-    &\cong
-    (V^{\tensor a} \outertensor V^{\tensor b})
-    \tensor_{\Complex[\symm_a] \tensor \Complex[\symm_b]}
-    (E \outertensor F)
-    \\
-    &\cong
-    (V^{\tensor a} \tensor_{\Complex[\symm_a]} E)
-    \tensor
-    (V^{\tensor b} \tensor_{\Complex[\symm_b]} F)
-    \\
-    &=
-    \Schur(E) \tensor \Schur(F)
-  \end{align*}
-  as claimed.
-\end{proof}
+% \begin{proof}
+%   We find that
+%   \begin{align*}
+%     \Schur(E \circ F)
+%     &=
+%     V^{\tensor (a+b)}
+%     \tensor_{\Complex[\symm_{a+b}]}
+%     \Complex[\symm_{a+b}]
+%     \tensor_{\Complex[\symm_a \times \symm_b]}
+%     (E \outertensor F)
+%     \\
+%     &\cong
+%     V^{\tensor (a+b)}
+%     \tensor_{\Complex[\symm_a \times \symm_b]}
+%     (E \outertensor F)
+%     \\
+%     &\cong
+%     (V^{\tensor a} \outertensor V^{\tensor b})
+%     \tensor_{\Complex[\symm_a] \tensor \Complex[\symm_b]}
+%     (E \outertensor F)
+%     \\
+%     &\cong
+%     (V^{\tensor a} \tensor_{\Complex[\symm_a]} E)
+%     \tensor
+%     (V^{\tensor b} \tensor_{\Complex[\symm_b]} F)
+%     \\
+%     &=
+%     \Schur(E) \tensor \Schur(F)
+%   \end{align*}
+%   as claimed.
+% \end{proof}
 
 
 
@@ -315,7 +315,7 @@ A row tabloid can be represented as follows:
 \]
 Every numbering~$T$ defines a row tabloid~$[T]$.
 
-The group~$\symm_n$ acts transitive on the set of numberings of shape~$\lambda$, which induces a transitive group action on the set of row tabloids of shape~$\lambda$.
+The group~$\symm_n$ acts transitive on the set of numberings of shape~$\lambda$ via~$(\sigma.T)_{ij} = \sigma(T_{ij})$, which induces a transitive group action on the set of row tabloids of shape~$\lambda$.
 The \defemph{row group}~$R(T)$ of a numbering~$T$ is given by all permutations~$\sigma \in \symm_n$ that act row-wise on~$T$, i.e.\ the stabilizer of the associated tabloid~$[T]$.
 
 It follows that~$\symm_n$ acts linearly on~$M^\lambda$, the free vector space on the set of row tabloids of shape~$\lambda$, and that for any numbering~$T$ of shape~$\lambda$,
@@ -369,22 +369,7 @@ It follows that
   \Symm^{\lambda_1}(V) \tensor \dotsb \tensor \Symm^{\lambda_t}(V)
   \\
   &\defines
-  M^\lambda(V) \,,
-\end{align*}
-or alternatively that
-\begin{align*}
-  \Schur(M^\lambda)
-  &=
-  V^{\tensor n} \tensor_{\Complex[\symm_n]} \Complex[\symm_n]/(p - 1 \suchthat p \in R(T))
-  \\
-  &\cong
-  V^{\tensor n}/(x - x.p \suchthat p \in R(T))
-  \\
-  &\cong
-  V^{\tensor n}/(x - x.p \suchthat p \in \symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t})
-  \\
-  &\cong
-  \Symm^{\lambda_1}(V) \otimes \dotsb \otimes \Symm^{\lambda_t}(V) \,.
+  M^\lambda(V) \,.
 \end{align*}
 
 
@@ -411,13 +396,13 @@ The group~$\symm_n$ acts on~$\widetilde{M}^\lambda$ via~$\sigma.[T] = [\sigma.T]
   \Complex[\symm_n]/(q - \sign(q)1 \suchthat q \in C(T))
   \\
   &\cong
-  \signrep_{\lambda_1} \circ \dotsb \circ \signrep_{\lambda_t} \,.
+  \signrep_{\symm_{\tilde{\lambda}_1}} \circ \dotsb \circ \signrep_{\symm_{\tilde{\lambda}_t}} \,.
 \end{align*}
 It follows that
 \[
   \Schur\bigl( \widetilde{M}^\lambda \bigr)
   \cong
-  \Exterior^{\lambda_1}(V) \tensor \dotsb \tensor \Exterior^{\lambda_t}(V)
+  \Exterior^{\tilde{\lambda}_1}(V) \tensor \dotsb \tensor \Exterior^{\tilde{\lambda}_t}(V)
   =
   \widetilde{M}^{\lambda}(V) \,.
 \]
@@ -437,14 +422,17 @@ If~$T$ is any numbering of shape~$\lambda$ then its \defemph{Young centralizer} 
   \Complex[\symm_n] \,.
 \]
 The \defemph{Specht module}~$S^{\lambda}$ is the subspace of~$M^{\lambda}$ spanned by the elements~$v_T \defined c_T \cdot [T]$ as~$T$ ranges through the numbering of shape~$\lambda$.
-It holds that~$\sigma \cdot v_T = v_{\sigma \cdot T}$ for every~$\sigma \in \symm_n$ and numbering~$T$ of shape~$\lambda$ whence~$S^\lambda$ is a subrepresentation of~$M^\lambda$.
+This is a subrepresentation of~$M^\lambda$.
+% It holds that~$\sigma \cdot v_T = v_{\sigma \cdot T}$ for every~$\sigma \in \symm_n$ and numbering~$T$ of shape~$\lambda$ whence~$S^\lambda$ is a subrepresentation of~$M^\lambda$.
 
 \begin{theorem}[Classification of irreducible representations of~$\symm_n$]
   \label{irreps of sn}
   \leavevmode
   \begin{enumerate}
     \item
-      The representations~$S^\lambda$ with~$\lambda \ispar n$ are pairwise non-isomorphic irreducible representations of the symmetric group~$\symm_n$, and every irreducible representation of~$\symm_n$ is of this form.
+      The representations~$S^\lambda$ with~$\lambda \ispar n$ are pairwise non-isomorphic irreducible representations.
+    \item
+      Every irreducible representation of~$\symm_n$ is of the form~$S^\lambda$ for some partition~$\lambda \ispar n$.
     \item
       The elements~$v_T$ where~$T$ ranges through the standard Young tableaux of shape~$\lambda$ form a basis of~$S^\lambda$.
       Hence
@@ -524,7 +512,7 @@ Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it foll
 
 
 \begin{corollary}
-  For any~$n \geq 0$,~$V^{\tensor n} \cong \bigoplus_{\lambda \ispar n} S^{\lambda}(V)^{\oplus f_\lambda}$ where~$f_\lambda$ denotes the number of standard Young tableaux of shape~$\lambda$.
+  For any~$n \geq 0$,~$V^{\tensor n} \cong \bigoplus_{\lambda \ispar n} S^{\lambda}(V)^{\oplus f^\lambda}$ where~$f^\lambda$ denotes the number of standard Young tableaux of shape~$\lambda$.
 \end{corollary}
 
 
@@ -570,53 +558,53 @@ Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it foll
 \end{proof}
 
 
-\begin{example}
-  The partitions of~$n = 2$ are~$\lambda = (1,1)$ and~$\mu = (2)$.
-  Each of those partitions admits precisely one standard Young tableau:
-  \[
-    \begin{ytableau}
-      1 & 2
-    \end{ytableau}
-    \qquad
-    \begin{ytableau}
-      1 \\
-      2
-    \end{ytableau}
-  \]
-  It follows that~$f_\lambda = f_\mu = 1$ and therefore
-  \[
-    V \tensor V
-    =
-    V^{\tensor 2}
-    \cong
-    S^{\lambda}(V)^{\oplus f_\lambda}
-    \oplus
-    S^{\mu}(V)^{\oplus f_\mu}
-    \cong
-    \Symm^2(V) \oplus \Exterior^2(V) \,.
-  \]
-\end{example}
+% \begin{example}
+%   The partitions of~$n = 2$ are~$\lambda = (1,1)$ and~$\mu = (2)$.
+%   Each of those partitions admits precisely one standard Young tableau:
+%   \[
+%     \begin{ytableau}
+%       1 & 2
+%     \end{ytableau}
+%     \qquad
+%     \begin{ytableau}
+%       1 \\
+%       2
+%     \end{ytableau}
+%   \]
+%   It follows that~$f^\lambda = f_\mu = 1$ and therefore
+%   \[
+%     V \tensor V
+%     =
+%     V^{\tensor 2}
+%     \cong
+%     S^{\lambda}(V)^{\oplus f^\lambda}
+%     \oplus
+%     S^{\mu}(V)^{\oplus f_\mu}
+%     \cong
+%     \Symm^2(V) \oplus \Exterior^2(V) \,.
+%   \]
+% \end{example}
 
 
-\begin{remark}
-  The Schur functor~$\Schur = V^{\tensor n} \tensor_{\Complex[S_n]} (-)$ admits a right adjoint given by~$\Schur' = \Hom_{\GL(V)}(V^{\tensor n}, -)$.
-  We have for every partition~$\lambda$ with~$\lambda \ispar n$ and~$\ell(\lambda) \leq m$ and every finite-dimensional polynomials~{\representation{$\GL(V)$}}~$W$ that
-  \begin{align*}
-    \text{multiplicity of~$S^\lambda$ in~$\Schur'(W)$}
-    &=
-    \dim \Hom_{\symm_n}(S^\lambda, \Schur'(W))
-    \\
-    &=
-    \dim \Hom_{\GL(V)}(\Schur(S^\lambda), W)
-    \\
-    &=
-    \dim \Hom_{\GL(V)}(S^\lambda(V), W)
-    \\
-    &=
-    \text{multiplicity of~$S^\lambda(V)$ in~$W$}
-  \end{align*}
-  We see in particular that~$\Schur'(S^\lambda(V)) \cong S^\lambda$.
-\end{remark}
+% \begin{remark}
+%   The Schur functor~$\Schur = V^{\tensor n} \tensor_{\Complex[S_n]} (-)$ admits a right adjoint given by~$\Schur' = \Hom_{\GL(V)}(V^{\tensor n}, -)$.
+%   We have for every partition~$\lambda$ with~$\lambda \ispar n$ and~$\ell(\lambda) \leq m$ and every finite-dimensional polynomials~{\representation{$\GL(V)$}}~$W$ that
+%   \begin{align*}
+%     \text{multiplicity of~$S^\lambda$ in~$\Schur'(W)$}
+%     &=
+%     \dim \Hom_{\symm_n}(S^\lambda, \Schur'(W))
+%     \\
+%     &=
+%     \dim \Hom_{\GL(V)}(\Schur(S^\lambda), W)
+%     \\
+%     &=
+%     \dim \Hom_{\GL(V)}(S^\lambda(V), W)
+%     \\
+%     &=
+%     \text{multiplicity of~$S^\lambda(V)$ in~$W$}
+%   \end{align*}
+%   We see in particular that~$\Schur'(S^\lambda(V)) \cong S^\lambda$.
+% \end{remark}
 
 
 
@@ -628,14 +616,13 @@ Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it foll
 
 \subsection{The Grothendieck ring of~$\GL(V)$}
 
-Recall that the Grothendieck group~$\K_0(\Acat)$ of an abelian category~$\Acat$ is generated by the isomorphism classes of objects of~$\Acat$ subject to the relation~$[B] = [A] + [C]$ for every short exact sequence~$0 \to A \to B \to C \to 0$ in~$\Acat$.
+Recall that the Grothendieck group~$\K_0(\Acat)$ of a semisimple abelian category~$\Acat$ is generated by the isomorphism classes of objects of~$\Acat$ subject to the relation~$[A] + [B] = [A \oplus B]$ for any two objects~$A, B \in \Acat$.
 Then in particular
 \begin{equation}
   \label{additivity in grothendieck group}
   [A] + [B] = [A \oplus B]
 \end{equation}
-for all~$A, B \in \Acat$.
-If the abelian category~$\Acat$ is semisimple, i.e.\ if every short exact sequence in~$\Acat$ splits, then the relations~\eqref{additivity in grothendieck group} sufficies to define~$\K_0(\Acat)$.
+for all~$A, B \in \Acat$, and if~$\Acat$ semisimple then these relations suffice to define~$\K_0(\GL(V))$.
 
 Let~$\Acat$ be the semisimple category of finite-dimensional polynomial representations of~$\GL(V)$.
 We abbreviate~$\K_0(\GL(V)) \defined \K_0(\Acat)$
@@ -658,7 +645,7 @@ The character of a~{\representation{$\GL(V)$}} results in a well-defined ring ho
 where~$\Lambda(m)$ denotes the ring of symmetric polynomials in the variables~$x_1, \dotsc, x_m$.
 
 
-\subsection{The representation ring of~$\symm_n$}
+\subsection{The representation ring of the symmetric groups}
 
 For every~$n \geq 0$ let~$R_n$ be the Grothendieck group of~$\rep{S_n}$, the category of finite-dimensional~{\representations{$S_n$}}.
 We can define on~$R \defined \bigoplus_{n \geq 0} R_n$ a multiplication via
@@ -667,9 +654,7 @@ We can define on~$R \defined \bigoplus_{n \geq 0} R_n$ a multiplication via
   =
   [E \circ F] \,.
 \]
-Note that~$1_R = [\trivrep_{S_0}]$ is multiplicative neutral and that this multiplicaton is associative and commutative by \cref{properties of circle product}.
-The multiplication is also distributive and~$R_i R_j \subseteq R_{i+j}$ for all~$i,j \geq 0$.
-Hence~$R$ becomes a graded ring.
+This makes~$R$ into a commutative graded ring.
 
 The category~$\rep{S_n}$ is semisimple by Maschke’s theorem and it follows from \cref{irreps of sn} that~$R_n$ admits a~{\basis{$\Integer$}} given by the isomorphism classes~$[S^\lambda]$ with~$\lambda \ispar n$.
 The ring~$R$ hence damits a~{\basis{$\Integer$}} given by the isomorphism classes~$[S^\lambda]$ where~$\lambda$ ranges through all partitions (of all natural numbers).
@@ -688,14 +673,14 @@ For every~$k \geq 0$ let~$\Lambda(k)$ denote the ring of symmetric polynomials, 
 When dealing with symmetric polynomials it often happens that the number of variables,~$k$, does not matter:
 One has a family~$(f_k)_{k \geq 0}$ of symmetric polynomials~$f_k \in \Lambda(k)$ such that~$f_k(x_1, \dotsc, x_{k-1}, 0) = f_{k-1}(x_1, \dotsc, x_{k-1})$ for every~$k \geq 1$, and for every~$k \geq 1$ an identity involving~$f_k$ which reduces for~$x_k \to 0$ to the identity involving~$f_{k-1}$.
 
-\begin{example}
-  The elementary symmetric polynomials~$e_n(x_1, \dotsc, x_k)$ and the completely symmetric polynomials~$h_n(x_1, \dotsc, x_k)$ are for every~$k \geq 1$ related by the formulas
-  \[
-    \sum_{i=0}^s (-1)^i e_i(x_1, \dotsc, x_k) h_{s-i}(x_1, \dotsc, x_k) = 0
-  \]
-  where~$s \geq 0$.
-  The identities in~$k-1$ variables follows from the corresponding ones in~$k$ variables by setting~$x_k \to 0$.
-\end{example}
+% \begin{example}
+%   The elementary symmetric polynomials~$e_n(x_1, \dotsc, x_k)$ and the completely symmetric polynomials~$h_n(x_1, \dotsc, x_k)$ are for every~$k \geq 1$ related by the formulas
+%   \[
+%     \sum_{i=0}^s (-1)^i e_i(x_1, \dotsc, x_k) h_{s-i}(x_1, \dotsc, x_k) = 0
+%   \]
+%   where~$s \geq 0$.
+%   The identities in~$k-1$ variables follows from the corresponding ones in~$k$ variables by setting~$x_k \to 0$.
+% \end{example}
 
 To formalize this phenomenon we introduce the \defemph{ring of symmetric functions}~$\Lambda$:
 For every degree~$n \geq 0$ we set
@@ -705,15 +690,15 @@ For every degree~$n \geq 0$ we set
   \left\{
     (f_k)_{k \geq 0}
   \suchthat*
-    \begin{tabular}{c}
+    \begin{tabular}{@{}c@{}}
       $f_k \in \Lambda_n(k)$ with \\
       $f_k(x_1, \dotsc, x_{k-1}, 0) = f_{k-1}(x_1, \dotsc, x_{k-1})$ \\
       for every~$k \geq 1$
     \end{tabular}
   \right\}
-  \\
-  &=
-  \lim( \Lambda_n(0) \from \Lambda_n(1) \from \Lambda_n(2) \from \Lambda_n(3) \from \dotsb)
+%   \\
+%   &=
+%   \lim( \Lambda_n(0) \from \Lambda_n(1) \from \Lambda_n(2) \from \Lambda_n(3) \from \dotsb)
 \end{align*}
 where~$\Lambda_n(k) \to \Lambda_n(k-1)$ is the group homomorphism given by setting  ~$x_k \to 0$.
 We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lambda_n$ with multiplication given by
@@ -721,26 +706,20 @@ We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lamb
   (f_k)_{k \geq 0} \cdot (g_k)_{k \geq 0}
   \defined
   (f_k g_k)_{k \geq 0} \,.
-\]13
+\]
 
 \begin{remark}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      We have
-      \[
-        \Lambda
-        =
-        \lim( \Lambda(0) \from \Lambda(1) \from \Lambda(2) \from \Lambda(3) \from \dotsb)
-      \]
-      in the category of graded rings.
-    \item
-      The elements of~$\Lambda$, the ring of symmetric functions, are not functions, despite the name.
-  \end{enumerate}
+  We have
+  $
+    \Lambda
+    =
+    \lim( \Lambda(0) \from \Lambda(1) \from \Lambda(2) \from \Lambda(3) \from \dotsb)
+  $
+  in the category of graded rings.
 \end{remark}
 
 \begin{example}
-  For every~$n \geq 0$ we have an element
+  For every degree~$n \geq 0$ we have an element
   \[
     e_n
     \defined
@@ -773,50 +752,50 @@ We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lamb
   \[
     s_\lambda(x_1, \dotsc, x_k)
     =
-    \sum_{T'} x_{T'}
+    \sum_{T} x_{T'}
     \in
     \Integer[x_1, \dotsc, x_n]
   \]
-  where~$T'$ ranges through the semistandard Young tableaux of shape~$\lambda$ with entries in~$\{1, \dotsc, k\}$.
+  where~$T$ ranges through the semistandard Young tableaux of shape~$\lambda$ with entries in~$\{1, \dotsc, k\}$.
   
-  If for example~$\lambda = (2,2)$ and~$k = 3$ then the semistandard Young tableaux are as follows:
-  \[
-    \begin{ytableau}
-      1 & 1 \\
-      2 & 2
-    \end{ytableau}
-    \qquad
-    \begin{ytableau}
-      1 & 1 \\
-      2 & 3
-    \end{ytableau}
-    \qquad
-    \begin{ytableau}
-      1 & 1 \\
-      3 & 3
-    \end{ytableau}
-    \qquad
-    \begin{ytableau}
-      1 & 2 \\
-      2 & 3
-    \end{ytableau}
-    \qquad
-    \begin{ytableau}
-      1 & 2 \\
-      3 & 3
-    \end{ytableau}
-    \qquad
-    \begin{ytableau}
-      2 & 2 \\
-      3 & 3
-    \end{ytableau}
-  \]
-  The Schur polynomial~$s_{(2,2)}(x_1, x_2, x_3)$ is therefore given by
-  \[
-    s_{(2,2)}(x_1, x_2, x_3)
-    =
-    x_1^2 x_2^2 + x_1^2 x_2 x_3 + x_1^2 x_3^2 + x_1 x_2^2 x_3 + x_1 x_2 x_3^2 + x_2^2 x_3^3 \,.
-  \]
+%   If for example~$\lambda = (2,2)$ and~$k = 3$ then the semistandard Young tableaux are as follows:
+%   \[
+%     \begin{ytableau}
+%       1 & 1 \\
+%       2 & 2
+%     \end{ytableau}
+%     \qquad
+%     \begin{ytableau}
+%       1 & 1 \\
+%       2 & 3
+%     \end{ytableau}
+%     \qquad
+%     \begin{ytableau}
+%       1 & 1 \\
+%       3 & 3
+%     \end{ytableau}
+%     \qquad
+%     \begin{ytableau}
+%       1 & 2 \\
+%       2 & 3
+%     \end{ytableau}
+%     \qquad
+%     \begin{ytableau}
+%       1 & 2 \\
+%       3 & 3
+%     \end{ytableau}
+%     \qquad
+%     \begin{ytableau}
+%       2 & 2 \\
+%       3 & 3
+%     \end{ytableau}
+%   \]
+%   The Schur polynomial~$s_{(2,2)}(x_1, x_2, x_3)$ is therefore given by
+%   \[
+%     s_{(2,2)}(x_1, x_2, x_3)
+%     =
+%     x_1^2 x_2^2 + x_1^2 x_2 x_3 + x_1^2 x_3^2 + x_1 x_2^2 x_3 + x_1 x_2 x_3^2 + x_2^2 x_3^3 \,.
+%   \]
   We observe the following:
   \begin{enumerate}
     \item
@@ -866,9 +845,9 @@ We have for every~$k \geq 0$ a homomorphism of graded rings
 that assigns to~$f$ the entailed symmetric polynomial in~$k$ variables.
 An equality~$f = g$ holds in~$\Lambda$ if and only if for every~$k \geq 0$ the equality~$f(x_1, \dotsc, x_k) = g(x_1, \dotsc, x_k)$ hold.
 
-\begin{example}
-  The identities~$\sum_{i=0}^s (-1)^i e_i h_{s-i} = 0$ for~$s \geq 0$ hold in~$\Lambda$.
-\end{example}
+% \begin{example}
+%   The identities~$\sum_{i=0}^s (-1)^i e_i h_{s-i} = 0$ for~$s \geq 0$ hold in~$\Lambda$.
+% \end{example}
 
 \begin{proposition}
   \leavevmode
@@ -876,9 +855,9 @@ An equality~$f = g$ holds in~$\Lambda$ if and only if for every~$k \geq 0$ the e
     \item
       The symmetric functions~$e_1, e_2, \dotsc$ generate~$\Lambda$ and are algebraically independent.
     \item
-      The monomials~$e_\lambda$ where~$\lambda$ ranges through all partitions form a~{\basis{$\Integer$}} of~$\Lambda$.
-    \item
       The symmetric functions~$h_1, h_2, \dotsc$ generate~$\Lambda$ and are algebraically independent.
+    \item
+      The monomials~$e_\lambda$ where~$\lambda$ ranges through all partitions form a~{\basis{$\Integer$}} of~$\Lambda$.
     \item
       The monomials~$h_\lambda$ where~$\lambda$ ranges through all partitions form a~{\basis{$\Integer$}} of~$\Lambda$.
     \item
@@ -907,7 +886,7 @@ The multiplicity of~$\Phi$ stems from the identity~$\widetilde{M}^\lambda = \sig
 
 
 
-\section{Representations and symmetric polynomials}
+\section{Conclusion}
 
 \begin{corollary}
   The composition
@@ -941,7 +920,7 @@ The multiplicity of~$\Phi$ stems from the identity~$\widetilde{M}^\lambda = \sig
 
 We have thus finally arrived at the following commutative diagram of rings:
 \[
-  \begin{tikzcd}[sep = huge]
+  \begin{tikzcd}[sep = large]
     R
     \arrow[leftrightarrow]{r}{\sim}
     \arrow{d}[left]{\Schur}
