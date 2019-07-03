@@ -48,13 +48,11 @@ In this talk we will continue to explain the following connections:
 
 \section{Recalling the last talk}
 
-A \defemph{semistandard Young tableaux} of shape~$\lambda$ assigns to each box of the Young diagram a natural number~$1, 2, 3, \dotsc$, weakly increasing in each row and strictly increasing in each column.
-
 
 
 \subsection{The irreducible representations~$S^\lambda(V)$}
 
-We have previously seen that the isomorphism classes of irreducible finite-dimensional polynomial representations of~$\GL(V)$ are indexed by the set of all partitions.
+We have previously seen that the isomorphism classes of irreducible finite-dimensional polynomial representations of~$\GL(V)$ are indexed by the set of all partitions:
 For every partition~$\lambda$ with~$\lambda = (\lambda_1, \dotsc, \lambda_t)$ let
 \[
   \widetilde{M}^\lambda(V)
@@ -80,14 +78,14 @@ Note that~$\widetilde{M}^\lambda(V) = 0$ if~$\length(\lambda) > m$, i.e.\ if the
   \]
 \end{example}
 
-The irreducible polynomial representation of~$\GL(V)$ associated to the partition~$\lambda$ given by
+The \defemph{Schur module} associated to~$\lambda$ is given by
 \[
   S^{\lambda}(V)
   =
   \widetilde{M}^{\lambda}(V)/Q^{\lambda}(V)
 \]
 for a certain submodule~$Q_\lambda$ of~$\widetilde{M}_\lambda$.
-This is the \defemph{Schur module} associated to~$\lambda$.
+For~$\length(\lambda) \leq m$ these are precisely the irreducible finite-dimensional polynomial representations of~$\GL(V)$.
 
 \begin{example}
   \leavevmode
@@ -105,7 +103,7 @@ This is the \defemph{Schur module} associated to~$\lambda$.
 
 The polynomial~{\representations{$\GL(V)$}} can also be described by their characters:
 Using a basis~$e_1, \dotsc, e_m$ of~$V$ we may identify~$\GL(V)$ with~$\GL_m(\Complex)$.
-For any finite-dimensional polynomial representation~$\rho \colon \GL(V) \to \GL(W)$ the \defemph{weight space}~$W_\beta$ for the \defemph{weight}~$\beta = (\beta_1, \dotsc, \beta_m) \in \Natural^m$ is given by
+For any finite-dimensional polynomial representation~$\rho \colon \GL(V) \to \GL(W)$ the \defemph{weight space}~$W_\beta$ for~$\beta = (\beta_1, \dotsc, \beta_m) \in \Natural^m$ is given by
 \[
   W_\beta
   =
@@ -129,7 +127,7 @@ The character~$\Char(W)$ is actually a symmetric polynomial, and the representat
   \leavevmode
   \begin{enumerate}
     \item
-      The basis~$e_{i_1} \wedge \dotsb \wedge e_{i_n}$ of~$\Exterior^n(V)$ with~$i_1 < \dotsb < i_n$ consists of weight vectors, and its character given by is
+      The basis~$e_{i_1} \wedge \dotsb \wedge e_{i_n}$ of~$\Exterior^n(V)$ with~$i_1 < \dotsb < i_n$ consists of weight vectors, and its character is given by
       \[
         \Char\Bigl( \Exterior^n(V) \Bigr)(x_1, \dotsc, x_m)
         =
@@ -145,9 +143,9 @@ The character~$\Char(W)$ is actually a symmetric polynomial, and the representat
         =
         \sum_{1 \leq i_1 \leq \dotsb \leq i_n \leq m} x_{i_1} \dotsb x_{i_n}
         =
-        h_n(x_1, \dotsc, x_m) \,,
+        h_n(x_1, \dotsc, x_m)
       \]
-      the~{\howmanyth{$n$}} complete homogeneous symmetric polynomial in~$m$ variables.
+      is the~{\howmanyth{$n$}} complete homogeneous symmetric polynomial in~$m$ variables.
   \end{enumerate}
 \end{example}
 
@@ -172,7 +170,7 @@ It follows that for every~{\representation{$\symm_n$}}~$E$ we get a~{\representa
   \defined
   V^{\tensor n} \tensor_{\Complex[\symm_n]} E \,.
 \]
-This construction results an exact (additive) functor
+This construction results an exact additive functor
 \[
   \Schur
   \colon
@@ -217,13 +215,13 @@ is a representation of~$\symm_n$.
 
 \begin{lemma}
   \label{properties of circle product}
-  Let~$V_i$,~$V$ and~$W$ be representations of symmetric groups.
+  Let~$E_i$,~$E$ and~$F$ be representations of symmetric groups.
   Then
   \begin{enumerate}
     \item
-      $(V_1 \circ \dotsb \circ V_s) \circ \dotsb \circ (W_1 \circ \dotsb \circ W_t) \cong V_1 \circ \dotsb \circ W_t$,
+      $(E_1 \circ \dotsb \circ E_s) \circ \dotsb \circ (F_1 \circ \dotsb \circ F_t) \cong E_1 \circ \dotsb \circ F_t$,
     \item
-      $V \circ W \cong W \circ V$.
+      $E \circ F \cong F \circ E$.
   \end{enumerate}
 \end{lemma}
 
@@ -276,9 +274,10 @@ is a representation of~$\symm_n$.
 For better use of the Schur functor~$\Schur$ we need some understand of the representation theory of the symmetric group~$\symm_n$, where~$n \geq 0$.
 In this section we always assume that~$\lambda \ispar n$ unless otherwise specified.
 
-A \defemph{numbering} of a Young tableaux~$Y$ of shape~$\lambda \ispar n$ fills in the boxes of~$Y$ with the numbers~$1, \dotsc, n$.
+Recall that a \defemph{semistandard Young tableaux} of shape~$\lambda$ assigns to each box of the Young diagram of~$\lambda$ a natural number~$1, 2, 3, \dotsc$, weakly increasing in each row and strictly increasing in each column.
+A \defemph{numbering} of shape~$\lambda$ fills in the boxes of the Young diagram of~$\lambda$ bijectively with the numbers~$1, \dotsc, n$.
 A \defemph{standard Young tableaux} is a semistandard Young tableaux that is also a numbering.
-This means that we assign to each box of the Young diagram of~$\lambda$ precisely one integer~$1, 2, \dotsc, n$ such that both rows and columns are (necessarily strictly) increasing.
+This means that we assign to the boxes of the Young diagram of~$\lambda$ bijectively the integers~$1, 2, \dotsc, n$, such that both rows and columns are (necessarily strictly) increasing.
 \[
   \begin{tikzcd}[column sep = small]
     \text{numbering}
@@ -329,7 +328,7 @@ It follows that~$\symm_n$ acts linearly on~$M^\lambda$, the free vector space on
   \Complex[\symm_n] \tensor_{\Complex[R(T)]} \Complex[R(T)]/(p - 1 \suchthat p \in R(T))
   \\
   &\cong
-  \Complex[\symm_n] \tensor_{\Complex[R(T)]} \trivrep_{R(T)}
+  \Complex[\symm_n] \tensor_{\Complex[R(T)]} \trivrep_{R(T)} \,.
 \end{align*}
 If~$T$ is the \enquote{horizontal standard numbering}, e.g.
 \[
@@ -396,7 +395,7 @@ We can alter the construction of~$M^\lambda$ in two ways:
 Working with column instead of rows and introducing an alternating sign.
 
 We denote by~$C(T)$ the column group of a numbering~$T$, i.e.\ all permutations that act column-wise on~$T$.
-We let~$\widetilde{M}^\lambda$ be the free vector generated by the numbering~$T$ of shape~$\lambda$ subject to the relations~$T = \sign(\sigma) \sigma.T$ for~$\sigma \in C(T)$.
+We let~$\widetilde{M}^\lambda$ be the free vector generated by the numbering~$T$ of shape~$\lambda$ subject to the relations~$\sigma.T = \sign(\sigma) T$ for~$\sigma \in C(T)$.
 The resulting vector space generators~$[T]$ of~$\widetilde{M}^\lambda$ may be visualized as follows:
 \[
   \ColumnTabloid{{1,4},{2,5},{3}}
@@ -469,7 +468,7 @@ The map
   v_T
 \]
 is a well-defined surjective homomorphism of~{\representations{$\symm_n$}}.
-Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it follows that under the isomorphism~$\Schur(\widetilde{M}^\lambda) \cong \widetilde{M}^\lambda(V)$ it follows that~$\Schur(Q^\lambda) \cong Q^{\lambda}(V)$.
+Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it follows that under the isomorphism~$\Schur(\widetilde{M}^\lambda) \cong \widetilde{M}^\lambda(V)$ we have~$\Schur(Q^\lambda) \cong Q^{\lambda}(V)$.
 
 \begin{theorem}
   For any partition~$\lambda \ispar n$,
@@ -538,7 +537,7 @@ Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it foll
   \]
   with
   \begin{align*}
-    f_\lambda
+    f^\lambda
     &=
     \text{multiplicity of~$S_\lambda$ in~$\Complex[\symm_n]$}
     \\
@@ -636,7 +635,7 @@ Then in particular
   [A] + [B] = [A \oplus B]
 \end{equation}
 for all~$A, B \in \Acat$.
-If the abelian category~$\Acat$ is semisimple, i.e.\ if every short exact sequence in~$\Acat$ splits, then the relations~\eqref{additivity in grothendieck group} sufficice to construct~$\K_0(\Acat)$.
+If the abelian category~$\Acat$ is semisimple, i.e.\ if every short exact sequence in~$\Acat$ splits, then the relations~\eqref{additivity in grothendieck group} sufficies to define~$\K_0(\Acat)$.
 
 Let~$\Acat$ be the semisimple category of finite-dimensional polynomial representations of~$\GL(V)$.
 We abbreviate~$\K_0(\GL(V)) \defined \K_0(\Acat)$
@@ -692,7 +691,7 @@ One has a family~$(f_k)_{k \geq 0}$ of symmetric polynomials~$f_k \in \Lambda(k)
 \begin{example}
   The elementary symmetric polynomials~$e_n(x_1, \dotsc, x_k)$ and the completely symmetric polynomials~$h_n(x_1, \dotsc, x_k)$ are for every~$k \geq 1$ related by the formulas
   \[
-    \sum_{i=0}^s (-1)^i h_{s-i}(x_1, \dotsc, x_k) e_i(x_1, \dotsc, x_k) = 0
+    \sum_{i=0}^s (-1)^i e_i(x_1, \dotsc, x_k) h_{s-i}(x_1, \dotsc, x_k) = 0
   \]
   where~$s \geq 0$.
   The identities in~$k-1$ variables follows from the corresponding ones in~$k$ variables by setting~$x_k \to 0$.
@@ -722,7 +721,23 @@ We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lamb
   (f_k)_{k \geq 0} \cdot (g_k)_{k \geq 0}
   \defined
   (f_k g_k)_{k \geq 0} \,.
-\]
+\]13
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have
+      \[
+        \Lambda
+        =
+        \lim( \Lambda(0) \from \Lambda(1) \from \Lambda(2) \from \Lambda(3) \from \dotsb)
+      \]
+      in the category of graded rings.
+    \item
+      The elements of~$\Lambda$, the ring of symmetric functions, are not functions, despite the name.
+  \end{enumerate}
+\end{remark}
 
 \begin{example}
   For every~$n \geq 0$ we have an element
@@ -744,22 +759,6 @@ We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lamb
   \]
   and similarly elements~$h_{\lambda}, p_{\lambda} \in \Lambda_{\size{\lambda}}$.
 \end{example}
-
-\begin{remark}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      We have that
-      \[
-        \Lambda
-        =
-        \lim( \Lambda(0) \from \Lambda(1) \from \Lambda(2) \from \Lambda(3) \from \dotsb)
-      \]
-      in the category of graded rings.
-    \item
-      The elements of the ring~$\Lambda$ are not functions, despite its name.
-  \end{enumerate}
-\end{remark}
 
 
 \begin{example}[Schur polynomials  and Schur functions]
@@ -839,7 +838,7 @@ We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lamb
     \item
       It holds that~$s_\lambda(x_1, \dotsc, x_{k-1}, 0) = s_\lambda(x_1, \dotsc, x_{k-1})$.
   \end{enumerate}
-  We find that we get a well-defined element~$s_\lambda \in \Lambda_{\size{\lambda}}$, the \defemph{Schur function}.
+  We find that we get a well-defined element~$s_\lambda \in \Lambda_{\size{\lambda}}$, the \defemph{Schur function} associated to~$\lambda$.
 \end{example}
 
 \begin{proposition}
@@ -851,9 +850,8 @@ We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lamb
 \end{corollary}
 
 \begin{proof}
-  The basis~$[S^\lambda(V)]$ of~$\K_0(\GL(V))$ is mapped to the basis~$s_\lambda(x_1, \dotsc, x_m)$ of~$\Lambda(m)$, both indexed with~$\length(\lambda) \leq m$.
+  The basis~$[S^\lambda(V)]$ of~$\K_0(\GL(V))$ is mapped to the basis~$s_\lambda(x_1, \dotsc, x_m)$ of~$\Lambda(m)$, both indexed by the partitions~$\lambda$ with~$\length(\lambda) \leq m$.
 \end{proof}
-
 
 We have for every~$k \geq 0$ a homomorphism of graded rings
 \[
@@ -869,7 +867,7 @@ that assigns to~$f$ the entailed symmetric polynomial in~$k$ variables.
 An equality~$f = g$ holds in~$\Lambda$ if and only if for every~$k \geq 0$ the equality~$f(x_1, \dotsc, x_k) = g(x_1, \dotsc, x_k)$ hold.
 
 \begin{example}
-  The equality~$\sum_{i=0}^s (-1)^i h_{s-i} e_i = 0$ with~$s \geq 0$ hold in~$\Lambda$.
+  The identities~$\sum_{i=0}^s (-1)^i e_i h_{s-i} = 0$ for~$s \geq 0$ hold in~$\Lambda$.
 \end{example}
 
 \begin{proposition}
@@ -888,8 +886,8 @@ An equality~$f = g$ holds in~$\Lambda$ if and only if for every~$k \geq 0$ the e
   \end{enumerate}
 \end{proposition}
 
-The mapping~$e_i(x_1, \dotsc, x_k) \mapsto e_i(x_1, \dotsc, x_{k+1})$ with~$i = 0, \dotsc, k$ extends to an embedding of rings~$\Lambda(k) \to \Lambda(k+1)$, and the above shows that one can regard~$\Lambda$ is the resulting colimit, i.e.\ as the polynomial ring~$\Integer[e_1, e_2, e_3, \dotsc]$.
-Similarly for~$h_i$ instead of~$e_i$.
+% The mapping~$e_i(x_1, \dotsc, x_k) \mapsto e_i(x_1, \dotsc, x_{k+1})$ with~$i = 0, \dotsc, k$ extends to an embedding of rings~$\Lambda(k) \to \Lambda(k+1)$, and the above shows that one can regard~$\Lambda$ is the resulting colimit, i.e.\ as the polynomial ring~$\Integer[e_1, e_2, e_3, \dotsc]$.
+% Similarly for~$h_i$ instead of~$e_i$.
 
 \begin{theorem}
   Let~$\Phi \colon \Lambda \to R$ be the unique additive group homomorphism that maps the basis element~$e_\lambda$ to the element~$[\widetilde{M}^\lambda]$ where~$\lambda$ ranges through all partitions.
