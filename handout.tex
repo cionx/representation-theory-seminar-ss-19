@@ -1,0 +1,1065 @@
+\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{style}
+
+\titlehead{Graduate Seminar on Representation Theory \hfill Jendrik Stelzner \hfill July 4, 2019}
+\title{More on the \\ Representation~Theory \\ of~$\GL(V)$}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-4em}
+
+We’re working over the fixed ground field~$\Complex$.
+We abbreviate~$\tensor_{\Complex}$ as~$\tensor$.
+We denote by~$V$ some~{\dimensional{$m$}} vector space.
+The set of natural numbers~$\Natural$ contains~$0$.
+We write~$\lambda \ispar n$ to mean that~$\lambda$ is a partition of~$n$.
+
+In this talk we will continue to explain the following connections:
+\[
+  \begin{tikzcd}[sep = large]
+    \begin{tabular}{c}
+      representation theory of \\
+      the symmetric groups
+    \end{tabular}
+    \arrow[leftrightarrow]{r}
+    \arrow{d}
+    &
+    \text{symmetric functions}
+    \arrow{d}
+    \\
+    \begin{tabular}{c}
+      representation theory \\
+      of~$\GL(V)$
+    \end{tabular}
+    \arrow[leftrightarrow]{r}
+    &
+    \text{symmetric polynomials}
+  \end{tikzcd}
+\]
+
+
+
+
+
+\section{Recalling the last talk}
+
+A \defemph{semistandard Young tableaux} of shape~$\lambda$ assigns to each box of the Young diagram a natural number~$1, 2, 3, \dotsc$, weakly increasing in each row and strictly increasing in each column.
+
+
+
+\subsection{The irreducible representations~$S^\lambda(V)$}
+
+We have previously seen that the isomorphism classes of irreducible finite-dimensional polynomial representations of~$\GL(V)$ are indexed by the set of all partitions.
+For every partition~$\lambda$ with~$\lambda = (\lambda_1, \dotsc, \lambda_t)$ let
+\[
+  \widetilde{M}^\lambda(V)
+  =
+  \Exterior^{\tilde{\lambda}_1}(V) \tensor \dotsb \tensor \Exterior^{\tilde{\lambda}_n}(V) \,.
+\]
+where~$\tilde{\lambda}$ is the transposed of~$\lambda$.
+The tensor factor~$\Exterior^{\tilde{\lambda}_j}(V)$ hence comes from the~{\howmanyth{$j$}} column of the Young diagram associated to~$\lambda$, which has height~$\tilde{\lambda}_j$.
+Note that~$\widetilde{M}^\lambda(V) = 0$ if~$\length(\lambda) > m$, i.e.\ if the Young diagram of~$\lambda$ has more than~$m$ rows.
+
+\begin{example}
+  The Young diagram of~$\lambda = (3,3,2,1)$ is given by
+  \[
+    \ydiagram{3,3,2,1}
+  \]
+  and therefore
+  \[
+    \ytableausetup{boxsize=0.7em}
+    \widetilde{M}^{\lambda}(V)
+    =
+    \Exterior^4(V) \tensor \Exterior^3(V) \tensor \Exterior^2(V) \,.
+    \ytableausetup{boxsize=normal}
+  \]
+\end{example}
+
+The irreducible polynomial representation of~$\GL(V)$ associated to the partition~$\lambda$ given by
+\[
+  S^{\lambda}(V)
+  =
+  \widetilde{M}^{\lambda}(V)/Q^{\lambda}(V)
+\]
+for a certain submodule~$Q_\lambda$ of~$\widetilde{M}_\lambda$.
+This is the \defemph{Schur module} associated to~$\lambda$.
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For~$\lambda = (1, \dotsc, 1) \ispar n$ we have~$S^{\lambda}(V) = \Exterior^n(V)$.
+    \item
+      For~$\lambda = (n)$ we have~$S^{\lambda}(V) = \Symm^n(V)$.
+  \end{enumerate}
+\end{example}
+
+
+
+\subsection{Characters}
+
+The polynomial~{\representations{$\GL(V)$}} can also be described by their characters:
+Using a basis~$e_1, \dotsc, e_m$ of~$V$ we may identify~$\GL(V)$ with~$\GL_m(\Complex)$.
+For any finite-dimensional polynomial representation~$\rho \colon \GL(V) \to \GL(W)$ the \defemph{weight space}~$W_\beta$ for the \defemph{weight}~$\beta = (\beta_1, \dotsc, \beta_m) \in \Natural^m$ is given by
+\[
+  W_\beta
+  =
+  \{
+    w \in W
+  \suchthat
+    \text{$\diag(x_1, \dotsc, x_m).w = x_1^{\beta_1} \dotsm x_m^{\beta_m} w$ for all~$x_1, \dotsc, x_m \in \Complex^{\times}$}
+  \} \,.
+\]
+The representation~$W$ decomposes into weight spaces in the sense that~$W = \bigoplus_{\beta \in \Natural^m} W_\beta$ and its \defemph{character} is the polynomial~$\Char(W) \in \Integer[x_1, \dotsc, x_m]$ given by
+\[
+  \Char(W)(x_1, \dotsc, x_m)
+  =
+  \tr(\rho(\diag(x_1, \dotsc, x_m)))
+  =
+  \sum_{\beta \in \Natural^m} \dim(W_\beta) x^\beta \,.
+\]
+The character~$\Char(W)$ is actually a symmetric polynomial, and the representation~$W$ is (up to isomorphism) uniquely determined by its character.
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The basis~$e_{i_1} \wedge \dotsb \wedge e_{i_n}$ of~$\Exterior^n(V)$ with~$i_1 < \dotsb < i_n$ consists of weight vectors, and its character given by is
+      \[
+        \Char\Bigl( \Exterior^n(V) \Bigr)(x_1, \dotsc, x_m)
+        =
+        \sum_{1 \leq i_1 < \dotsb < i_n \leq m} x_{i_1} \dotsb x_{i_n}
+        =
+        e_n(x_1, \dotsc, x_m) \,,
+      \]
+      the~{\howmanyth{$n$}} elementary symmetric polynomial in~$m$ variables.
+    \item
+      We see similarly that
+      \[
+        \Char(\Symm^n(V))(x_1, \dotsc, x_m)
+        =
+        \sum_{1 \leq i_1 \leq \dotsb \leq i_n \leq m} x_{i_1} \dotsb x_{i_n}
+        =
+        h_n(x_1, \dotsc, x_m) \,,
+      \]
+      the~{\howmanyth{$n$}} complete homogeneous symmetric polynomial in~$m$ variables.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+\section{From~$\symm_n$ to~$\GL(V)$}
+
+We denote for any group~$G$ by~$\trivrep_G$ the trivial representation of~$G$.
+We denote for~$n \geq 1$ by~$\signrep_{\symm_n}$ the sign representation of the symmetric group~$\symm_n$.
+
+For every~$n \geq 0$ the tensor power~$V^{\tensor n}$ is again a~{\representation{$\GL(V)$}}, and it is also a right~{\representation{$\symm_n$}} via
+\[
+  (e_1 \tensor \dotsb \tensor e_n) . \sigma
+  =
+  e_{\sigma(1)} \tensor \dotsb \tensor e_{\sigma(n)} \,.
+\]
+It follows that for every~{\representation{$\symm_n$}}~$E$ we get a~{\representation{$\GL(V)$}}
+\[
+  \Schur(E)
+  \defined
+  V^{\tensor n} \tensor_{\Complex[\symm_n]} E \,.
+\]
+This construction results an exact (additive) functor
+\[
+  \Schur
+  \colon
+  \rep{\symm_n}
+  \to
+  \prep{\GL(V)} \,,
+\]
+where~$\rep{\symm_n}$ is the category of finite-dimensional~{\representations{$\symm_n$}} and~$\rep{\GL(V)}$ denotes the category of finite-dimensional polynomial~{\representations{$\GL(V)$}}. 
+The functor~$\Schur$ is the \defemph{Schur functor}.
+It depends on both~$n$ and~$V$, but we will omit this in our notation.
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have that~$\trivrep_{\symm_n} \cong \Complex[\symm_n]/\gen{\sigma - 1 \suchthat \sigma \in \symm_n}_{\Complex}$ and thus
+      \begin{align*}
+        \Schur( \trivrep_{\symm_n} )
+        &\cong
+        V^{\tensor n} \tensor_{\Complex[\symm_n]} \Complex[\symm_n]/\gen{\sigma - 1 \suchthat \sigma \in \symm_n}_{\Complex}
+        \\
+        &\cong
+        V^{\tensor n}/\gen{x - x.\sigma \suchthat t \in V^{\tensor n}}_{\Complex}
+        \\
+        &\cong
+        \Symm^n(V) \,.
+      \end{align*}
+    \item
+      We find similarly that~$\Schur( \signrep_{\symm_n} ) \cong \Exterior^n(V)$.
+  \end{enumerate}
+\end{example}
+
+If~$V_1, \dotsc, V_t$ are representations of the groups~$\symm_{n_1}, \dotsc, \symm_{n_t}$ then for~$n = n_1 + \dotsb + n_t$,
+\[
+  V_1 \circ \dotsb \circ V_t
+  \defined
+  \Complex[\symm_n]
+  \tensor_{\Complex[\symm_{n_1} \times \dotsb \times \symm_{n_t}]}
+  (V_1 \outertensor \dotsb \outertensor V_t)
+\]
+is a representation of~$\symm_n$.
+
+\begin{lemma}
+  \label{properties of circle product}
+  Let~$V_i$,~$V$ and~$W$ be representations of symmetric groups.
+  Then
+  \begin{enumerate}
+    \item
+      $(V_1 \circ \dotsb \circ V_s) \circ \dotsb \circ (W_1 \circ \dotsb \circ W_t) \cong V_1 \circ \dotsb \circ W_t$,
+    \item
+      $V \circ W \cong W \circ V$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  \label{multiplicativity of schur functor}
+  If~$E$ and~$F$ are representations of symmetric groups~$\symm_a$ and~$\symm_b$ then
+  \[
+    \Schur(E \circ F) \cong \Schur(E) \tensor \Schur(F) \,.
+  \]
+\end{lemma}
+
+\begin{proof}
+  We find that
+  \begin{align*}
+    \Schur(E \circ F)
+    &=
+    V^{\tensor (a+b)}
+    \tensor_{\Complex[\symm_{a+b}]}
+    \Complex[\symm_{a+b}]
+    \tensor_{\Complex[\symm_a \times \symm_b]}
+    (E \outertensor F)
+    \\
+    &\cong
+    V^{\tensor (a+b)}
+    \tensor_{\Complex[\symm_a \times \symm_b]}
+    (E \outertensor F)
+    \\
+    &\cong
+    (V^{\tensor a} \outertensor V^{\tensor b})
+    \tensor_{\Complex[\symm_a] \tensor \Complex[\symm_b]}
+    (E \outertensor F)
+    \\
+    &\cong
+    (V^{\tensor a} \tensor_{\Complex[\symm_a]} E)
+    \tensor
+    (V^{\tensor b} \tensor_{\Complex[\symm_b]} F)
+    \\
+    &=
+    \Schur(E) \tensor \Schur(F)
+  \end{align*}
+  as claimed.
+\end{proof}
+
+
+
+
+
+\section{Some representation theory of~$\symm_n$}
+
+For better use of the Schur functor~$\Schur$ we need some understand of the representation theory of the symmetric group~$\symm_n$, where~$n \geq 0$.
+In this section we always assume that~$\lambda \ispar n$ unless otherwise specified.
+
+A \defemph{numbering} of a Young tableaux~$Y$ of shape~$\lambda \ispar n$ fills in the boxes of~$Y$ with the numbers~$1, \dotsc, n$.
+A \defemph{standard Young tableaux} is a semistandard Young tableaux that is also a numbering.
+This means that we assign to each box of the Young diagram of~$\lambda$ precisely one integer~$1, 2, \dotsc, n$ such that both rows and columns are (necessarily strictly) increasing.
+\[
+  \begin{tikzcd}[column sep = small]
+    \text{numbering}
+    \arrow[dash]{dr}
+    &
+    {}
+    &
+    \begin{tabular}{@{}c@{}}
+      semistandard \\
+      Young tableaux
+    \end{tabular}
+    \arrow[dash]{dl}
+    \\
+    {}
+    &
+    \begin{tabular}{@{}c@{}}
+      standard \\
+      Young tableaux
+    \end{tabular}
+    &
+    {}
+  \end{tikzcd}
+\]
+
+
+\subsection{The representation $M^\lambda$}
+
+Two numbering~$T$ and~$T'$ of a Young diagram of shape~$\lambda$ are \defemph{row-equivalent} if they have the same entries in each row.
+A \defemph{row tabloid} is an equivalence class of row-equivalent numbering.
+A row tabloid can be represented as follows:
+\[
+  \Tabloid{{1,2,3},{4,5,6},{7,8}}
+  =
+  \Tabloid{{2,1,3},{4,6,5},{8,7}}
+\]
+Every numbering~$T$ defines a row tabloid~$[T]$.
+
+The group~$\symm_n$ acts transitive on the set of numberings of shape~$\lambda$, which induces a transitive group action on the set of row tabloids of shape~$\lambda$.
+The \defemph{row group}~$R(T)$ of a numbering~$T$ is given by all permutations~$\sigma \in \symm_n$ that act row-wise on~$T$, i.e.\ the stabilizer of the associated tabloid~$[T]$.
+
+It follows that~$\symm_n$ acts linearly on~$M^\lambda$, the free vector space on the set of row tabloids of shape~$\lambda$, and that for any numbering~$T$ of shape~$\lambda$,
+\begin{align*}
+  M^\lambda
+  &\cong
+  \Complex[\symm_n]/(p - 1 \suchthat p \in R(T))
+  \\
+  &\cong
+  \Complex[\symm_n] \tensor_{\Complex[R(T)]} \Complex[R(T)]/(p - 1 \suchthat p \in R(T))
+  \\
+  &\cong
+  \Complex[\symm_n] \tensor_{\Complex[R(T)]} \trivrep_{R(T)}
+\end{align*}
+If~$T$ is the \enquote{horizontal standard numbering}, e.g.
+\[
+  \begin{ytableau}
+     1 &  2 & 3 & 4 & 5 \\
+     6 &  7 & 8 & 9 \\
+  \end{ytableau}
+\]
+for~$\lambda = (5,4)$, then~$R(T) = \symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}$ where~$\lambda = (\lambda_1, \dotsc, \lambda_t)$ and thus
+\begin{align*}
+  M^\lambda
+  &\cong
+  \Complex[\symm_n] \tensor_{\Complex[R(T)]} \trivrep_{R(T)}
+  \\
+  &\cong
+  \Complex[\symm_n]
+  \tensor_{\Complex[\symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}]}
+  \trivrep_{\symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}}
+  \\
+  &\cong
+  \Complex[\symm_n]
+  \tensor_{\Complex[\symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t}]}
+  (\trivrep_{\symm_{\lambda_1}} \outertensor \dotsb \outertensor \trivrep_{\symm_{\lambda_t}})
+  \\
+  &=
+  \trivrep_{\symm_{\lambda_1}} \circ \dotsb \circ \trivrep_{\symm_{\lambda_t}} \,.
+\end{align*}
+It follows that
+\begin{align*}
+  \Schur(M^\lambda)
+  &\cong
+  \Schur(\trivrep_{\symm_{\lambda_1}} \circ \dotsb \circ \trivrep_{\symm_{\lambda_t}})
+  \\
+  &\cong
+  \Schur(\trivrep_{\symm_{\lambda_1}}) \tensor \dotsb \tensor \Schur(\trivrep_{\symm_{\lambda_t}})
+  \\
+  &\cong
+  \Symm^{\lambda_1}(V) \tensor \dotsb \tensor \Symm^{\lambda_t}(V)
+  \\
+  &\defines
+  M^\lambda(V) \,,
+\end{align*}
+or alternatively that
+\begin{align*}
+  \Schur(M^\lambda)
+  &=
+  V^{\tensor n} \tensor_{\Complex[\symm_n]} \Complex[\symm_n]/(p - 1 \suchthat p \in R(T))
+  \\
+  &\cong
+  V^{\tensor n}/(x - x.p \suchthat p \in R(T))
+  \\
+  &\cong
+  V^{\tensor n}/(x - x.p \suchthat p \in \symm_{\lambda_1} \times \dotsb \times \symm_{\lambda_t})
+  \\
+  &\cong
+  \Symm^{\lambda_1}(V) \otimes \dotsb \otimes \Symm^{\lambda_t}(V) \,.
+\end{align*}
+
+
+
+\subsection{The representation~$\widetilde{M}^\lambda$}
+
+We can alter the construction of~$M^\lambda$ in two ways:
+Working with column instead of rows and introducing an alternating sign.
+
+We denote by~$C(T)$ the column group of a numbering~$T$, i.e.\ all permutations that act column-wise on~$T$.
+We let~$\widetilde{M}^\lambda$ be the free vector generated by the numbering~$T$ of shape~$\lambda$ subject to the relations~$T = \sign(\sigma) \sigma.T$ for~$\sigma \in C(T)$.
+The resulting vector space generators~$[T]$ of~$\widetilde{M}^\lambda$ may be visualized as follows:
+\[
+  \ColumnTabloid{{1,4},{2,5},{3}}
+  =
+  - \ColumnTabloid{{2,4},{1,5},{3}}
+  =
+  \ColumnTabloid{{2,5},{1,4},{3}}
+\]
+The group~$\symm_n$ acts on~$\widetilde{M}^\lambda$ via~$\sigma.[T] = [\sigma.T]$ for any numbering~$T$ of shape~$\lambda$, and
+\begin{align*}
+  \widetilde{M}^\lambda
+  &\cong
+  \Complex[\symm_n]/(q - \sign(q)1 \suchthat q \in C(T))
+  \\
+  &\cong
+  \signrep_{\lambda_1} \circ \dotsb \circ \signrep_{\lambda_t} \,.
+\end{align*}
+It follows that
+\[
+  \Schur\bigl( \widetilde{M}^\lambda \bigr)
+  \cong
+  \Exterior^{\lambda_1}(V) \tensor \dotsb \tensor \Exterior^{\lambda_t}(V)
+  =
+  \widetilde{M}^{\lambda}(V) \,.
+\]
+
+
+
+\subsection{Specht modules}
+
+The irreducible representations of the symmetric group~$\symm_n$ can be indexed by the partitions~$\lambda \ispar n$ and constructed as follows:
+
+If~$T$ is any numbering of shape~$\lambda$ then its \defemph{Young centralizer} is the element
+\[
+  c_T
+  \defined
+  \sum_{q \in C(T)} \sign(q) q
+  \in
+  \Complex[\symm_n] \,.
+\]
+The \defemph{Specht module}~$S^{\lambda}$ is the subspace of~$M^{\lambda}$ spanned by the elements~$v_T \defined c_T \cdot [T]$ as~$T$ ranges through the numbering of shape~$\lambda$.
+It holds that~$\sigma \cdot v_T = v_{\sigma \cdot T}$ for every~$\sigma \in \symm_n$ and numbering~$T$ of shape~$\lambda$ whence~$S^\lambda$ is a subrepresentation of~$M^\lambda$.
+
+\begin{theorem}[Classification of irreducible representations of~$\symm_n$]
+  \label{irreps of sn}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The representations~$S^\lambda$ with~$\lambda \ispar n$ are pairwise non-isomorphic irreducible representations of the symmetric group~$\symm_n$, and every irreducible representation of~$\symm_n$ is of this form.
+    \item
+      The elements~$v_T$ where~$T$ ranges through the standard Young tableaux of shape~$\lambda$ form a basis of~$S^\lambda$.
+      Hence
+      \[
+        \dim S^\lambda
+        =
+        \text{number of standard Young tableaux of shape~$\lambda$} \,.
+      \]
+  \end{enumerate}
+\end{theorem}
+
+One can also construct the Specht module~$S^{\lambda}$ as a quotient of the representation~$\widetilde{M}^\lambda$:
+The map
+\[
+  \widetilde{M}^\lambda
+  \to
+  S^\lambda
+  \quad
+  [T]
+  \mapsto
+  v_T
+\]
+is a well-defined surjective homomorphism of~{\representations{$\symm_n$}}.
+Its kernel~$Q^\lambda$ can be described similarly to~$Q^\lambda(V)$, and it follows that under the isomorphism~$\Schur(\widetilde{M}^\lambda) \cong \widetilde{M}^\lambda(V)$ it follows that~$\Schur(Q^\lambda) \cong Q^{\lambda}(V)$.
+
+\begin{theorem}
+  For any partition~$\lambda \ispar n$,
+  \[
+    \Schur(S^\lambda) \cong S^{\lambda}(V) \,.
+  \]
+\end{theorem}
+
+\begin{proof}
+  By applying the (exact) functor~$\Schur(-)$ to the short exact sequence
+  \[
+    0
+    \to
+    Q^\lambda
+    \to
+    \widetilde{M}^\lambda
+    \to
+    S^\lambda
+    \to
+    0
+  \]
+  we get the short exact sequence
+  \[
+    0
+    \to
+    \Schur(Q^\lambda)
+    \to
+    \Schur(\widetilde{M}^\lambda)
+    \to
+    \Schur(S^\lambda)
+    \to
+    0
+  \]
+  and find that
+  \[
+    \Schur(S^\lambda)
+    \cong
+    \Schur(\widetilde{M}^\lambda)/\Schur(Q^\lambda)
+    \cong
+    \widetilde{M}^{\lambda}(V)/Q^{\lambda}(V)
+    \cong
+    S^{\lambda}(V) \,,
+  \]
+  proving the assertion.
+\end{proof}
+
+
+\begin{remark}
+  \label{kernel of schur functor}
+  If~$\length(\lambda) > m$, i.e.\ if the Young diagram of~$\lambda$ has more than~$m = \dim(V)$ rows, then~$\Schur(S^\lambda) = S^\lambda(V) = 0$.
+  If~$\length(\lambda) \leq m$ then~$\Schur(S^\lambda) = S^\lambda(V)$ is again an irreducible representation.
+\end{remark}
+
+
+\begin{corollary}
+  For any~$n \geq 0$,~$V^{\tensor n} \cong \bigoplus_{\lambda \ispar n} S^{\lambda}(V)^{\oplus f_\lambda}$ where~$f_\lambda$ denotes the number of standard Young tableaux of shape~$\lambda$.
+\end{corollary}
+
+
+\begin{proof}
+  We find with \cref{irreps of sn} and Maschke’s theorem that
+  \[
+    \Complex[\symm_n]
+    \cong
+    \bigoplus_{\lambda \ispar n} (S^\lambda)^{\oplus f^\lambda}
+  \]
+  with
+  \begin{align*}
+    f_\lambda
+    &=
+    \text{multiplicity of~$S_\lambda$ in~$\Complex[\symm_n]$}
+    \\
+    &=
+    \text{dimension of~$S_\lambda$}
+    \\
+    &=
+    \text{number of standard Young tableaux of shape~$\lambda$}
+  \end{align*}
+  where the second equality follows (for example) from the Artin--Wedderburn theorem.
+  It follows that
+  \begin{align*}
+    V^{\tensor n}
+    &=
+    V^{\tensor n} \tensor_{\Complex[\symm_n]} \Complex[\symm_n]
+    \\
+    &\cong
+    \Schur(\Complex[\symm_n])
+    \\
+    &\cong
+    \Schur\left( \bigoplus_{\lambda \ispar n} (S^\lambda)^{\oplus f^\lambda} \right)
+    \\
+    &\cong
+    \bigoplus_{\lambda \ispar n} \Schur(S^\lambda)^{\oplus f^\lambda}
+    \\
+    &\cong
+    \bigoplus_{\lambda \ispar n} S^{\lambda}(V)^{\oplus f^\lambda}
+  \end{align*}
+  as claimed.
+\end{proof}
+
+
+\begin{example}
+  The partitions of~$n = 2$ are~$\lambda = (1,1)$ and~$\mu = (2)$.
+  Each of those partitions admits precisely one standard Young tableau:
+  \[
+    \begin{ytableau}
+      1 & 2
+    \end{ytableau}
+    \qquad
+    \begin{ytableau}
+      1 \\
+      2
+    \end{ytableau}
+  \]
+  It follows that~$f_\lambda = f_\mu = 1$ and therefore
+  \[
+    V \tensor V
+    =
+    V^{\tensor 2}
+    \cong
+    S^{\lambda}(V)^{\oplus f_\lambda}
+    \oplus
+    S^{\mu}(V)^{\oplus f_\mu}
+    \cong
+    \Symm^2(V) \oplus \Exterior^2(V) \,.
+  \]
+\end{example}
+
+
+\begin{remark}
+  The Schur functor~$\Schur = V^{\tensor n} \tensor_{\Complex[S_n]} (-)$ admits a right adjoint given by~$\Schur' = \Hom_{\GL(V)}(V^{\tensor n}, -)$.
+  We have for every partition~$\lambda$ with~$\lambda \ispar n$ and~$\ell(\lambda) \leq m$ and every finite-dimensional polynomials~{\representation{$\GL(V)$}}~$W$ that
+  \begin{align*}
+    \text{multiplicity of~$S^\lambda$ in~$\Schur'(W)$}
+    &=
+    \dim \Hom_{\symm_n}(S^\lambda, \Schur'(W))
+    \\
+    &=
+    \dim \Hom_{\GL(V)}(\Schur(S^\lambda), W)
+    \\
+    &=
+    \dim \Hom_{\GL(V)}(S^\lambda(V), W)
+    \\
+    &=
+    \text{multiplicity of~$S^\lambda(V)$ in~$W$}
+  \end{align*}
+  We see in particular that~$\Schur'(S^\lambda(V)) \cong S^\lambda$.
+\end{remark}
+
+
+
+
+
+\section{Translation into rings}
+
+
+
+\subsection{The Grothendieck ring of~$\GL(V)$}
+
+Recall that the Grothendieck group~$\K_0(\Acat)$ of an abelian category~$\Acat$ is generated by the isomorphism classes of objects of~$\Acat$ subject to the relation~$[B] = [A] + [C]$ for every short exact sequence~$0 \to A \to B \to C \to 0$ in~$\Acat$.
+Then in particular
+\begin{equation}
+  \label{additivity in grothendieck group}
+  [A] + [B] = [A \oplus B]
+\end{equation}
+for all~$A, B \in \Acat$.
+If the abelian category~$\Acat$ is semisimple, i.e.\ if every short exact sequence in~$\Acat$ splits, then the relations~\eqref{additivity in grothendieck group} sufficice to construct~$\K_0(\Acat)$.
+
+Let~$\Acat$ be the semisimple category of finite-dimensional polynomial representations of~$\GL(V)$.
+We abbreviate~$\K_0(\GL(V)) \defined \K_0(\Acat)$
+This becomes a ring when endowed with the multiplication
+\[
+  [V] \cdot [W]
+  =
+  [V \tensor W] \,.
+\]
+It follows from last week’s classification of irreducible finite-dimensional polynomial~{\representations{$\GL(V)$}} that~$\K_0(\GL(V))$ admits a~{\basis{$\Integer$}} given by the isomorphism classes~$[S^\lambda(V)]$ where~$\lambda$ ranges through all partitions with~$\length(\lambda) \leq m$.
+
+The character of a~{\representation{$\GL(V)$}} results in a well-defined ring homomorphism
+\[
+  \Char
+  \colon
+  \K_0(\GL(V))
+  \to
+  \Lambda(m)
+\]
+where~$\Lambda(m)$ denotes the ring of symmetric polynomials in the variables~$x_1, \dotsc, x_m$.
+
+
+\subsection{The representation ring of~$\symm_n$}
+
+For every~$n \geq 0$ let~$R_n$ be the Grothendieck group of~$\rep{S_n}$, the category of finite-dimensional~{\representations{$S_n$}}.
+We can define on~$R \defined \bigoplus_{n \geq 0} R_n$ a multiplication via
+\[
+  [E] \cdot [F]
+  =
+  [E \circ F] \,.
+\]
+Note that~$1_R = [\trivrep_{S_0}]$ is multiplicative neutral and that this multiplicaton is associative and commutative by \cref{properties of circle product}.
+The multiplication is also distributive and~$R_i R_j \subseteq R_{i+j}$ for all~$i,j \geq 0$.
+Hence~$R$ becomes a graded ring.
+
+The category~$\rep{S_n}$ is semisimple by Maschke’s theorem and it follows from \cref{irreps of sn} that~$R_n$ admits a~{\basis{$\Integer$}} given by the isomorphism classes~$[S^\lambda]$ with~$\lambda \ispar n$.
+The ring~$R$ hence damits a~{\basis{$\Integer$}} given by the isomorphism classes~$[S^\lambda]$ where~$\lambda$ ranges through all partitions (of all natural numbers).
+
+The additivity of the Schur functor(s)~$\Schur \colon \rep{S_n} \to \Acat$ gives for every~$n \geq 0$ a group homomorphism~$R_n \to \K_0(\GL(V))$, which together give a group homomorphism~$R \to \K_0(\GL(V))$.
+It follows from \cref{multiplicativity of schur functor} that this is a ring homomorphism.
+By abuse of notation we denote this homomorphism again by~$\Schur$.
+
+We have argued in \cref{kernel of schur functor} that the kernel of~$\Schur \colon R \to \K_0(\GL(V))$ is spanned by those~$[S^\lambda]$ with~$\length(\lambda) > m$, whereas all other basis vector~$[S^\lambda]$ with~$\length(\lambda) \leq m$ are mapped bijectively onto the basis~$[S^\lambda(V)]$ of~$\K_0(\GL(V))$.
+
+
+\subsection{The ring of symmetric functions}
+
+For every~$k \geq 0$ let~$\Lambda(k)$ denote the ring of symmetric polynomials, a subring of~$\Integer[x_1, \dotsc, x_k]$.
+
+When dealing with symmetric polynomials it often happens that the number of variables,~$k$, does not matter:
+One has a family~$(f_k)_{k \geq 0}$ of symmetric polynomials~$f_k \in \Lambda(k)$ such that~$f_k(x_1, \dotsc, x_{k-1}, 0) = f_{k-1}(x_1, \dotsc, x_{k-1})$ for every~$k \geq 1$, and for every~$k \geq 1$ an identity involving~$f_k$ which reduces for~$x_k \to 0$ to the identity involving~$f_{k-1}$.
+
+\begin{example}
+  The elementary symmetric polynomials~$e_n(x_1, \dotsc, x_k)$ and the completely symmetric polynomials~$h_n(x_1, \dotsc, x_k)$ are for every~$k \geq 1$ related by the formulas
+  \[
+    \sum_{i=0}^s (-1)^i h_{s-i}(x_1, \dotsc, x_k) e_i(x_1, \dotsc, x_k) = 0
+  \]
+  where~$s \geq 0$.
+  The identities in~$k-1$ variables follows from the corresponding ones in~$k$ variables by setting~$x_k \to 0$.
+\end{example}
+
+To formalize this phenomenon we introduce the \defemph{ring of symmetric functions}~$\Lambda$:
+For every degree~$n \geq 0$ we set
+\begin{align*}
+  \Lambda_n
+  &\defined
+  \left\{
+    (f_k)_{k \geq 0}
+  \suchthat*
+    \begin{tabular}{c}
+      $f_k \in \Lambda_n(k)$ with \\
+      $f_k(x_1, \dotsc, x_{k-1}, 0) = f_{k-1}(x_1, \dotsc, x_{k-1})$ \\
+      for every~$k \geq 1$
+    \end{tabular}
+  \right\}
+  \\
+  &=
+  \lim( \Lambda_n(0) \from \Lambda_n(1) \from \Lambda_n(2) \from \Lambda_n(3) \from \dotsb)
+\end{align*}
+where~$\Lambda_n(k) \to \Lambda_n(k-1)$ is the group homomorphism given by setting  ~$x_k \to 0$.
+We combine these groups into a graded ring~$\Lambda = \bigoplus_{n \geq 0} \Lambda_n$ with multiplication given by
+\[
+  (f_k)_{k \geq 0} \cdot (g_k)_{k \geq 0}
+  \defined
+  (f_k g_k)_{k \geq 0} \,.
+\]
+
+\begin{example}
+  For every~$n \geq 0$ we have an element
+  \[
+    e_n
+    \defined
+    (e_n(), e_n(x_1), e_n(x_1, x_2), e_n(x_1, x_2, x_3), \dotsc)
+    \in
+    \Lambda_n
+  \]
+  and similarly elements~$h_n, p_n \in \Lambda_n$.
+  We get for every partition~$\lambda = (\lambda_1, \dotsc, \lambda_t)$ an induced element
+  \[
+    e_{\lambda}
+    \defined
+    e_{\lambda_1} \dotsm e_{\lambda_t}
+    \in
+    \Lambda_{\size{\lambda}}
+  \]
+  and similarly elements~$h_{\lambda}, p_{\lambda} \in \Lambda_{\size{\lambda}}$.
+\end{example}
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have that
+      \[
+        \Lambda
+        =
+        \lim( \Lambda(0) \from \Lambda(1) \from \Lambda(2) \from \Lambda(3) \from \dotsb)
+      \]
+      in the category of graded rings.
+    \item
+      The elements of the ring~$\Lambda$ are not functions, despite its name.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}[Schur polynomials  and Schur functions]
+  Let~$\lambda$ be a partition.
+  For every semistandard Young tableaux~$T$ of shape~$\lambda$ with entries in~$\{1, \dotsc, k\}$ let
+  \[
+    x_T
+    \defined
+    \prod_{i \in T} x_i \,.
+  \]
+  The \defemph{Schur polynomial}~$s_\lambda(x_1, \dotsc, x_k)$ is defined as
+  \[
+    s_\lambda(x_1, \dotsc, x_k)
+    =
+    \sum_{T'} x_{T'}
+    \in
+    \Integer[x_1, \dotsc, x_n]
+  \]
+  where~$T'$ ranges through the semistandard Young tableaux of shape~$\lambda$ with entries in~$\{1, \dotsc, k\}$.
+  
+  If for example~$\lambda = (2,2)$ and~$k = 3$ then the semistandard Young tableaux are as follows:
+  \[
+    \begin{ytableau}
+      1 & 1 \\
+      2 & 2
+    \end{ytableau}
+    \qquad
+    \begin{ytableau}
+      1 & 1 \\
+      2 & 3
+    \end{ytableau}
+    \qquad
+    \begin{ytableau}
+      1 & 1 \\
+      3 & 3
+    \end{ytableau}
+    \qquad
+    \begin{ytableau}
+      1 & 2 \\
+      2 & 3
+    \end{ytableau}
+    \qquad
+    \begin{ytableau}
+      1 & 2 \\
+      3 & 3
+    \end{ytableau}
+    \qquad
+    \begin{ytableau}
+      2 & 2 \\
+      3 & 3
+    \end{ytableau}
+  \]
+  The Schur polynomial~$s_{(2,2)}(x_1, x_2, x_3)$ is therefore given by
+  \[
+    s_{(2,2)}(x_1, x_2, x_3)
+    =
+    x_1^2 x_2^2 + x_1^2 x_2 x_3 + x_1^2 x_3^2 + x_1 x_2^2 x_3 + x_1 x_2 x_3^2 + x_2^2 x_3^3 \,.
+  \]
+  We observe the following:
+  \begin{enumerate}
+    \item
+      The Schur polynomial~$s_\lambda(x_1, \dotsc, x_k)$ is homogeneous of degree~$\size{\lambda}$.
+    \item
+      If~$\length(\lambda) > k$, i.e.\ if the Young diagram of~$\lambda$ has more than~$k$ rows, then the Schur polynomial~$s_\lambda(x_1, \dotsc, x_k)$ vanishes since there exist no semistandard Young tableaux of shape~$\lambda$ with entries in~$\{1, \dotsc, k\}$.
+      (We don’t have enough entries to make the first column strictly increasing, which is required for a semistandard Young tableaux.)
+    \item
+      The Specht~module~$S^\lambda(V)$ has a basis~$e_T$ where~$T$ ranges through the semistandard Young tableaux with entries in~$\{1, \dotsc, m\}$.
+      Each~$e_T$ is a weight vector with corresponding weight~$x_T$.
+      Hence
+      \[
+        s_\lambda(x_1, \dotsc, x_m)
+        =
+        \Char(S^\lambda(V))(x_1, \dotsc, x_m) \,.
+      \]
+      This shows in particular that~$s_\lambda(x_1, \dotsc, x_m)$ is a symmetric polynomial.
+      We also see again that~$s_\lambda(x_1, \dotsc, x_m) = 0$ if~$\length(\lambda) > m$ since then~$S^\lambda(V) = 0$.
+    \item
+      It holds that~$s_\lambda(x_1, \dotsc, x_{k-1}, 0) = s_\lambda(x_1, \dotsc, x_{k-1})$.
+  \end{enumerate}
+  We find that we get a well-defined element~$s_\lambda \in \Lambda_{\size{\lambda}}$, the \defemph{Schur function}.
+\end{example}
+
+\begin{proposition}
+  For every~$k \geq 0$ the ring of symmetric polynomials~$\Lambda(k)$ has the Schur polynomials~$s_\lambda(x_1, \dotsc, x_k)$ with~$\length(\lambda) \leq k$ as a basis.
+\end{proposition}
+
+\begin{corollary}
+  The ring homomorphism~$\Char \colon \K_0(\GL(V)) \to \Lambda(m)$ is an isomorphim.
+\end{corollary}
+
+\begin{proof}
+  The basis~$[S^\lambda(V)]$ of~$\K_0(\GL(V))$ is mapped to the basis~$s_\lambda(x_1, \dotsc, x_m)$ of~$\Lambda(m)$, both indexed with~$\length(\lambda) \leq m$.
+\end{proof}
+
+
+We have for every~$k \geq 0$ a homomorphism of graded rings
+\[
+  \Lambda
+  \to
+  \Lambda(k) \,,
+  \quad
+  f
+  \mapsto
+  f(x_1, \dotsc, x_k)
+\]
+that assigns to~$f$ the entailed symmetric polynomial in~$k$ variables.
+An equality~$f = g$ holds in~$\Lambda$ if and only if for every~$k \geq 0$ the equality~$f(x_1, \dotsc, x_k) = g(x_1, \dotsc, x_k)$ hold.
+
+\begin{example}
+  The equality~$\sum_{i=0}^s (-1)^i h_{s-i} e_i = 0$ with~$s \geq 0$ hold in~$\Lambda$.
+\end{example}
+
+\begin{proposition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The symmetric functions~$e_1, e_2, \dotsc$ generate~$\Lambda$ and are algebraically independent.
+    \item
+      The monomials~$e_\lambda$ where~$\lambda$ ranges through all partitions form a~{\basis{$\Integer$}} of~$\Lambda$.
+    \item
+      The symmetric functions~$h_1, h_2, \dotsc$ generate~$\Lambda$ and are algebraically independent.
+    \item
+      The monomials~$h_\lambda$ where~$\lambda$ ranges through all partitions form a~{\basis{$\Integer$}} of~$\Lambda$.
+    \item
+      The symmetric functions~$s_\lambda$ where~$\lambda$ ranges through all partitions form a~{\basis{$\Integer$}} of~$\Lambda$.
+  \end{enumerate}
+\end{proposition}
+
+The mapping~$e_i(x_1, \dotsc, x_k) \mapsto e_i(x_1, \dotsc, x_{k+1})$ with~$i = 0, \dotsc, k$ extends to an embedding of rings~$\Lambda(k) \to \Lambda(k+1)$, and the above shows that one can regard~$\Lambda$ is the resulting colimit, i.e.\ as the polynomial ring~$\Integer[e_1, e_2, e_3, \dotsc]$.
+Similarly for~$h_i$ instead of~$e_i$.
+
+\begin{theorem}
+  Let~$\Phi \colon \Lambda \to R$ be the unique additive group homomorphism that maps the basis element~$e_\lambda$ to the element~$[\widetilde{M}^\lambda]$ where~$\lambda$ ranges through all partitions.
+  \begin{enumerate}
+    \item
+      The map~$\Phi$ is an isomorphism of rings.
+    \item
+      It holds that~$\Phi(h_\lambda) = [M^\lambda]$.
+    \item
+      It holds that~$\Phi(s_\lambda) = [S^\lambda]$.
+  \end{enumerate}
+\end{theorem}
+
+The multiplicity of~$\Phi$ stems from the identity~$\widetilde{M}^\lambda = \signrep_{\lambda_1} \circ \dotsb \circ \signrep_{\lambda_t}$ for~$\lambda = (\lambda_1, \dotsc, \lambda_t)$.
+
+
+
+
+
+\section{Representations and symmetric polynomials}
+
+\begin{corollary}
+  The composition
+  \[
+    \Lambda
+    \xlongto{\Phi^{-1}}
+    R
+    \xlongto{\Schur}
+    \K_0(\GL(V))
+    \xlongto{\Char}
+    \Lambda(m)
+  \]
+  is given by~$f \mapsto f(x_1, \dotsc, x_m)$.
+\end{corollary}
+
+\begin{proof}
+  The assertion holds for the basis elements~$s_\lambda$ of~$\Lambda$ as
+  \[
+    s_\lambda
+    \mapsto
+    [S^\lambda]
+    \mapsto
+    [\Schur(S^\lambda)]
+    =
+    [S^\lambda(V)]
+    \mapsto
+    s_\lambda(x_1, \dotsc, x_m) \,.
+  \]
+  The general assertion follow by additivity of all occuring maps.
+\end{proof}
+
+We have thus finally arrived at the following commutative diagram of rings:
+\[
+  \begin{tikzcd}[sep = huge]
+    R
+    \arrow[leftrightarrow]{r}{\sim}
+    \arrow{d}[left]{\Schur}
+    &
+    \Lambda
+    \arrow{d}[right]{f \mapsto f(x_1, \dotsc, x_m)}
+    \\
+    \K_0(\GL(V))
+    \arrow{r}[above]{\sim}[below]{\Char}
+    &
+    \Lambda(m)
+  \end{tikzcd}
+\]
+We have the following special cases of this diagram:
+\begin{gather*}
+  \begin{tikzcd}[ampersand replacement = \&]
+    {[S^\lambda]}
+    \arrow[leftrightarrow]{r}
+    \arrow{d}
+    \&
+    s_\lambda
+    \arrow{d}
+    \\
+    {[S^\lambda(V)]}
+    \arrow[leftrightarrow]{r}
+    \&
+    s_\lambda(x_1, \dotsc, x_n)
+  \end{tikzcd}
+  \\
+  \begin{tikzcd}[ampersand replacement = \&]
+    {[\widetilde{M}^\lambda]}
+    \arrow[leftrightarrow]{r}
+    \arrow{d}
+    \&
+    e_\lambda
+    \arrow{d}
+    \\
+    {[\widetilde{M}^\lambda(V)]}
+    \arrow[leftrightarrow]{r}
+    \&
+    e_\lambda(x_1, \dotsc, x_n)
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}[ampersand replacement = \&]
+    {[M^\lambda]}
+    \arrow[leftrightarrow]{r}
+    \arrow{d}
+    \&
+    h_\lambda
+    \arrow{d}
+    \\
+    {[M^\lambda(V)]}
+    \arrow[leftrightarrow]{r}
+    \&
+    h_\lambda(x_1, \dotsc, x_n)
+  \end{tikzcd}
+\end{gather*}
+
+We can now use these correspondeces to translate between problems about the representation theory of~$\symm_n$, the representation theory of~$\GL(V)$, and the combinatorics of symmetric polynomials.
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For every~$n \geq 0$ there exists unique natural numbers~$f^\lambda$ for~$\lambda \ispar n$ such that one and thus all of the following conditions hold:
+      \begin{enumerate}
+        \item
+          $\Complex[S_n] \cong \bigoplus_{\lambda \ispar n} (S^\lambda)^{\oplus f^\lambda}$,
+        \item
+          $V^{\tensor n} \cong \bigoplus_{\lambda \ispar n} S^\lambda(V)^{\oplus f^\lambda}$,
+        \item
+          $(x_1 + \dotsb + x_m)^n = \sum_{\lambda \ispar n} f^\lambda s_\lambda(x_1, \dotsc, x_m)$ for every~$m \geq 0$,
+        \item
+          $e_1^n = \sum_{\lambda \ispar n} f^\lambda s_\lambda$ in~$\Lambda$.
+      \end{enumerate}
+      We have already seen that it follows from the first description that~$f^\lambda$ is given by the number of standard Young tableaux of shape~$\lambda$.
+    \item
+      For every partition~$\lambda$ there exist unique natural numbers~$K_{\mu, \lambda}$ for~$\mu \strictlydominated \lambda$ such that one and thus all of the following conditions hold:
+      \begin{enumerate}
+        \item
+          $M^\lambda \cong S^\lambda \oplus \bigoplus_{\mu \strictlydominated \lambda} (S^\mu)^{\oplus K_{\mu, \lambda}}$,
+        \item
+          $M^\lambda(V) \cong S^\lambda(V) \oplus \bigoplus_{\mu \strictlydominated \lambda} S^\mu(V)^{\oplus K_{\mu, \lambda}}$,
+        \item
+          $h_\lambda(x_1, \dotsc, x_m) = s_\lambda(x_1, \dotsc, x_m) + \sum_{\mu \strictlydominated \lambda} K_{\mu, \lambda} s_\mu(x_1, \dotsc, x_m)$ for all~$m \geq 0$,
+        \item
+          $h_\lambda = s_\lambda + \sum_{\mu \strictlydominated \lambda} K_{\mu, \lambda} s_\mu$.
+      \end{enumerate}
+      The numbers~$K_{\mu, \lambda}$ are the \defemph{Kostka numbers}.
+    \item
+      For every partition~$\lambda$ there exist unique natural numbers~$K_{\mu, \lambda}$ such that one and thus all of the following conditions hold:
+      \begin{enumerate}
+        \item
+          $\widetilde{M}^\lambda \cong S^{\tilde{\lambda}} \oplus \bigoplus_{\tilde{\mu} \strictlydominated \lambda} (S^\mu)^{\oplus K_{\tilde{\mu}, \lambda}}$,
+        \item
+          $\widetilde{M}^\lambda(V) \cong S^{\tilde{\lambda}}(V) \oplus \bigoplus_{\tilde{\mu} \strictlydominated \lambda} S^\mu(V)^{\oplus K_{\tilde{\mu}, \lambda}}$,
+        \item
+          $e_\lambda(x_1, \dotsc, x_m) = s_{\tilde{\lambda}}(x_1, \dotsc, x_m) + \sum_{\tilde{\mu} \strictlydominated \lambda} K_{\tilde{\mu}, \lambda} s_\mu(x_1, \dotsc, x_m)$,
+        \item
+          $e_\lambda = s_{\tilde{\lambda}} + \sum_{\tilde{\mu} \strictlydominated \lambda} K_{\tilde{\mu}, \lambda} s_\mu$.
+      \end{enumerate}
+      The numbers~$K_{\mu, \lambda}$ are again the Kostka numbers as above.
+    \item
+      For any two partitions~$\lambda$ and~$\mu$ there exist natural numbers~$c^{\nu}_{\lambda, \mu}$ for~$\nu \ispar \size{\lambda} + \size{\mu}$ such that one and thus all of the following conditions hold:
+      \begin{enumerate}
+        \item
+          $S^\lambda \circ S^\mu \cong \sum_\nu (S^\nu)^{\oplus c_{\lambda, \mu}^{\nu}}$,
+        \item
+          $S^\lambda(V) \tensor S^\mu(V) \cong \sum_\nu S^\nu(V)^{\oplus c_{\lambda, \mu}^{\nu}}$,
+        \item
+          $s_\lambda(x_1, \dotsc, x_m) s_\mu(x_1, \dotsc, x_m) = \sum_{\nu} c_{\lambda, \mu}^\nu s_\nu(x_1, \dotsc, x_m)$,
+        \item
+          $s_\lambda s_\mu = \sum_{\nu} c_{\lambda, \mu}^{\nu} s_\nu$.
+      \end{enumerate}
+      The numbers~$c_{\lambda, \mu}^{\nu}$ are the \defemph{Littlewood--Richardson coefficients}.
+  \end{enumerate}
+\end{example}
+
+\end{document}
